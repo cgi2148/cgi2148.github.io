@@ -64,4 +64,4 @@ defaults:
       path: ""
     values:
       layout: "default"
-homepage: "about"
+homepage: "About me"
