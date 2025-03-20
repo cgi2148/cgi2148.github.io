@@ -56,3 +56,12 @@ tag_dir: tag/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# 홈페이지 설정 추가
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+homepage: "about"
