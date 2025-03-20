@@ -21,7 +21,8 @@
 title: 최광일
 email: cgi2148@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  cgi2148@gmail.com
+  안녕하세요! 건국대학교 데이터사이언스학과 석사과정 최광일입니다.
+  이 블로그에서는 개발 경험과 기술적인 이야기들을 공유합니다.
 # baseurl: "/" # the subpath of your site, e.g. /blog
 # url: "http://ejjoo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: cgi2148
