@@ -29,7 +29,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Roboto", "Nanum Gothic";
+  --font-family-sans-serif: "Nanum Myeongjo", "Roboto";
   --font-family-serif: "Nanum Myeongjo";
 }
 
@@ -49,7 +49,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Gelasio', 'Nanum Myeongjo', serif;
+	font-family: 'Nanum Myeongjo', serif;
 	color: #2c3e50;
 }
 
@@ -113,7 +113,7 @@ code {
 
 .sidebar-brand > a {
 	font-size: 300%;
-	font-family: 'Gelasio';
+	font-family: 'Nanum Myeongjo';
 	color: #fff;
 }
 
@@ -132,7 +132,7 @@ code {
 
 .nav-title {
 	font-size: 100%;
-	font-family: "Noto Sans";
+	font-family: "Nanum Myeongjo";
 	text-transform: uppercase;
 	border-bottom: 1px solid gray;
 	margin-bottom: 5px;
@@ -140,7 +140,7 @@ code {
 
 a.nav-item {
 	font-size: 120%;
-	font-family: "Noto Sans";
+	font-family: "Nanum Myeongjo";
 	text-transform: capitalize;
 	color: #aaa;
 }
@@ -232,7 +232,7 @@ article h3,
 article h4,
 article h5,
 article h6 {
-	font-family: "Roboto", "Nanum Gothic";
+	font-family: "Nanum Myeongjo";
 	color: #333;
   	margin-bottom: 0;
 }
@@ -290,7 +290,7 @@ footer {
 	margin-top: 80px;
 	font-size: 0.75em;
 	font-weight: lighter;
-	font-family: "Roboto";
+	font-family: "Nanum Myeongjo";
 	line-height: 1.5;
 }
 
