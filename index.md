@@ -4,7 +4,7 @@ title: 최광일(KwangIl Choi) #
 permalink: /
 ---
 
-# About me
+## About me
 
 건국대학교 대학원 데이터사이언스학과 석사과정
 
