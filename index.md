@@ -4,33 +4,34 @@ title: 최광일(KwangIl Choi) #
 permalink: /
 ---
 
+# 소개
+
 건국대학교 대학원 데이터사이언스학과 석사과정
 
-Email: cgi2148@gmail.com
-
-Phone: +82-10-4728-2148
-
-Website: [cgi2148.github.io](https://cgi2148.github.io)
-
-GitHub: [GitHub](https://github.com/cgi2148)
+**Email:** cgi2148@gmail.com  
+**Phone:** +82-10-4728-2148  
+**Website:** [cgi2148.github.io](https://cgi2148.github.io)  
+**GitHub:** [GitHub](https://github.com/cgi2148)
 
 ## ME
 
-정해진 틀에 안주하지 않기 위해, 새로운 분야로의 배움을 이어가고 있습니다.
+정해진 틀에 안주하지 않기 위해, 새로운 분야로의 배움을 이어가고 있습니다.  
 그 과정에서 끊임없는 성장을 통해 스스로의 한계를 넓혀 가는 중입니다.
 
 ## EDUCATION
 
-- Master of DataScience(2024~)
-KonKuk University
+- **Master of DataScience** (2024~)  
+  KonKuk University - Graduate School
 
-- Bachelor's of Computer Science(2022~2024)
-KwangWoon University Institute Of Information Technology
-Shanghai Univiersity (Broadcasting Department, 2017~2019, Dropout)
+- **Bachelor's of Computer Science** (2022~2024)  
+  KwangWoon University - Institute Of Information Technology 
+
+- **Shanghai University** (2017~2019)  
+  Brodcasting Department (Dropout)
 
 ## EXPERIENCE
 
-Camera Reporter @YonHapNewsTV (2019~2020)
+- **Camera Reporter** @YonHapNewsTV (2019~2020)
 
 ## PUBLICATIONS
 
