@@ -30,7 +30,8 @@ permalink: /
 
 ## EXPERIENCE
 
-- **Camera Reporter** @YonHapNewsTV (2019~2020)
+- **YonHapNews TV** 
+  Camera Reporter (2019~2020)
 
 ## PUBLICATIONS
 
