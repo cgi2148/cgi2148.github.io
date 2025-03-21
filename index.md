@@ -24,9 +24,7 @@ permalink: /
 
 - **Bachelor's of Computer Science** (2022~2024)  
   KwangWoon University - Institute Of Information Technology 
-
-- **Shanghai University** (2017~2019)  
-  Brodcasting Department (Dropout)
+  Shanghai University - Brodcasting Department (2017~2019, Dropout)
 
 ## EXPERIENCE
 
