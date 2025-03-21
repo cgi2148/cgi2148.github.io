@@ -57,11 +57,11 @@ tag_dir: tag/
 #   - vendor/gems/
 #   - vendor/ruby/
 
-# 홈페이지 설정 추가
+# 홈페이지 설정
 defaults:
   -
     scope:
       path: ""
     values:
       layout: "default"
-homepage: "About me"
+homepage: "/"
