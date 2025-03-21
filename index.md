@@ -19,7 +19,7 @@ permalink: /
 
 ## EDUCATION
 
-- **Master of DataScience** (2024~)  
+- **Master of Data Science** (2024~)  
   KonKuk University - Graduate School
 
 - **Bachelor's of Computer Science** (2022~2024)  
