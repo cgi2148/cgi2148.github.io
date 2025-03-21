@@ -5,7 +5,6 @@ permalink: /
 ---
 
 ## About me
-
 - **건국대학교 대학원 데이터사이언스학과 석사과정 재학**
 
 **Email:** cgi2148@gmail.com  
