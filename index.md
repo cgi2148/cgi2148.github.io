@@ -23,8 +23,8 @@ permalink: /
   Konkuk University - Graduate School
 
 - **Bachelor's of Computer Science** (2022~2024)  
-  Kwangwoon University - Institute Of Information Technology   
-  Shanghai University - Brodcasting Department (2017~2019, Dropout)
+  Kwangwoon University - Institute Of Information Technology  
+  Shanghai University - Broadcasting Department (2017~2019, Dropout)
 
 ## EXPERIENCE
 
