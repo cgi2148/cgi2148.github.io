@@ -299,6 +299,25 @@ footer {
 	color: #ccc;
 }
 
+article h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+article ul {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+article li {
+  margin-bottom: 0.5em;
+}
+
+article p {
+  margin-bottom: 1em;
+}
 
 @media (max-width: 576px) {
 	article {
