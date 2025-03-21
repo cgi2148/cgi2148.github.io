@@ -20,10 +20,10 @@ permalink: /
 ## EDUCATION
 
 - **Master of Data Science** (2024~)  
-  KonKuk University - Graduate School
+  Konkuk University - Graduate School
 
 - **Bachelor's of Computer Science** (2022~2024)  
-  KwangWoon University - Institute Of Information Technology 
+  Kwangwoon University - Institute Of Information Technology   
   Shanghai University - Brodcasting Department (2017~2019, Dropout)
 
 ## EXPERIENCE
