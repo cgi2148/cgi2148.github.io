@@ -1,0 +1,76 @@
+<article class="post">
+	<header class="post-header home">
+		<div class="post-title">Categories</div>
+	</header>
+
+	<div class="post-content">
+		{%- if site.posts.size > 0 -%}
+		<ul class="post-list" id="post-list">
+			{%- for post in site.posts -%}
+			<li class="post-list-item" data-category="{% if post.categories %}{{ post.categories | join: ' ' }}{% else %}{{ post.category }}{% endif %}">
+				{%- assign date_format = "%Y/%m/%d" -%}
+				<span class="post-date">{{ post.date | date: date_format }}</span>
+				<a class="post-link" href="{{ post.url | relative_url }}">
+					{{ post.title | escape }}
+				</a>
+				{% if post.categories contains "rag" %}
+					<span class="post-subcategory">[RAG]</span>
+				{% endif %}
+			</li>
+			{%- endfor -%}
+		</ul>
+		{%- endif -%}
+	</div>
+</article>
+
+<script src="/public/js/jquery-3.4.1.slim.min.js"></script>
+<script>
+	function filterPosts() {
+		var hash = window.location.hash.substring(1);
+		if (hash) {
+			// 제목 업데이트
+			var title = hash;
+			if (hash === 'konkuk') title = 'Konkuk';
+			else if (hash === 'mustree') title = 'Mustree';
+			else if (hash === 'rag') title = 'RAG';
+			else if (hash === 'rag-code') title = 'RAG-소스코드';
+			$('.post-title').text(title);
+
+			// 게시물 필터링
+			$('.post-list-item').each(function() {
+				var categories = $(this).data('category').split(' ');
+				var show = false;
+				
+				if (hash === 'konkuk') {
+					// Konkuk 카테고리일 때는 konkuk, rag, 또는 rag-code 카테고리가 포함된 모든 게시물 표시
+					for (var i = 0; i < categories.length; i++) {
+						if (categories[i] === 'konkuk' || categories[i] === 'rag' || categories[i] === 'rag-code') {
+							show = true;
+							break;
+						}
+					}
+					$(this).toggle(show);
+				} else if (hash === 'rag') {
+					show = categories.indexOf('rag') !== -1;
+					$(this).toggle(show);
+				} else if (hash === 'rag-code') {
+					show = categories.indexOf('rag-code') !== -1;
+					$(this).toggle(show);
+				} else {
+					show = categories.indexOf(hash) !== -1;
+					$(this).toggle(show);
+				}
+			});
+		}
+	}
+
+	// 페이지 로드 시 실행
+	$(document).ready(function() {
+		filterPosts();
+		
+		// URL 해시가 변경될 때마다 실행
+		$(window).on('hashchange', function() {
+			filterPosts();
+		});
+	});
+</script>
