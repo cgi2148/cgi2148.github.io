@@ -4,25 +4,6 @@ title: "OpenAI-LLM 소스코드"
 date: 2024-03-26 17:09:00 +0900
 categories: [konkuk, rag-code]
 ---
-네, Jupyter Notebook의 내용을 정확하게 마크다운으로 변환하겠습니다. 파일명에 공백이 있어서 먼저 수정하고, 내용을 순차적으로 변환하겠습니다.
-
-먼저 파일명을 수정하겠습니다:
-
-
-```bash
-mv "_posts/2024-03-26-rag-source-second-code .markdown" "_posts/2024-03-26-rag-source-second-code.markdown"
-```
-이제 파일의 내용을 정확하게 수정하겠습니다:
-
-
-```markdown:_posts/2024-03-26-rag-source-second-code.markdown
----
-layout: post
-title: "OpenAI-LLM 소스코드"
-date: 2024-03-26 17:09:00 +0900
-categories: [konkuk, rag-code]
----
-
 # OpenAI-LLM 소스코드
 
 이 포스트에서는 OpenAI의 LLM(Large Language Model)을 사용하는 방법에 대해 설명합니다.
