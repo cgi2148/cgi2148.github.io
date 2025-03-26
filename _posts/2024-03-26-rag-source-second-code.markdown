@@ -4,9 +4,19 @@ title: "OpenAI-LLM 소스코드"
 date: 2024-03-26 17:09:00 +0900
 categories: [konkuk, rag-code]
 ---
-# OpenAI-LLM 소스코드
+# API KEY를 환경변수로 관리하기 위한 설정 파일
+from dotenv import load_dotenv
 
-이 포스트에서는 OpenAI의 LLM(Large Language Model)을 사용하는 방법에 대해 설명합니다.
+# API KEY 정보로드
+load_dotenv()
+
+# LangSmith 추적을 설정합니다. https://smith.langchain.com
+# .env 파일에 LANGCHAIN_API_KEY를 입력합니다.
+# !pip install -qU langchain-teddynote
+from langchain_teddynote import logging
+
+# 프로젝트 이름을 입력합니다.
+logging.langsmith("CH01-Basic")
 
 ## ChatOpenAI
 
