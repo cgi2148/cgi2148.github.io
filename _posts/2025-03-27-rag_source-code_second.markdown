@@ -3,7 +3,7 @@ layout: post
 title: "OpenAI-LLM 소스코드"
 date: 2025-03-27 09:09:00 +0900
 categories: [konkuk, rag-code]
-------
+---
 ```python
 # API KEY를 환경변수로 관리하기 위한 설정 파일
 from dotenv import load_dotenv
