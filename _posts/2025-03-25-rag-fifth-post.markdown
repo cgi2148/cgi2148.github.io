@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "컨텍스트 윈도우(Context Window)와 출력 토큰"
-date: 2024-03-25 17:02:00 +0900
+date: 2025-03-25 17:02:00 +0900
 categories: [konkuk, rag]
 ---
 # 컨텍스트 윈도우(Context Window)와 출력 토큰 🔍

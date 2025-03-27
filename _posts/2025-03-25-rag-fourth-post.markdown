@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "토큰(token)"
-date: 2024-03-25 16:53:00 +0900
+date: 2025-03-25 16:53:00 +0900
 categories: [konkuk, rag]
 ---
 # 토큰(Token)의 개념과 중요성

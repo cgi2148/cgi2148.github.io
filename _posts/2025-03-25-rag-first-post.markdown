@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "RAG란 무엇인가?"
-date: 2024-03-25 16:32:00 +0900
+date: 2025-03-25 16:32:00 +0900
 categories: [konkuk, rag]
 ---
 # RAG(Retrieval Augmented Generation)를 사용해야 하는 이유

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LangSmith 설정"
-date: 2024-03-25 16:35:00 +0900
+date: 2025-03-25 16:35:00 +0900
 categories: [konkuk, rag]
 ---
 # 📌 LangSmith 설정 방법 요약

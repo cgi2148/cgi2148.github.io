@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OpenAI API Key 소스코드"
-date: 2024-03-26 16:09:00 +0900
+date: 2025-03-26 16:09:00 +0900
 categories: [konkuk, rag-code]
 ---
 ## OpenAI API 키 발급 및 설정
@@ -65,7 +65,7 @@ for package_name in [
     "langchain-text-splitters",
 ]:
     try:
-        package_version = version(package_name)
+        package_version = version(package_name)ㄱ
         print(f"{package_name}: {package_version}")
     except ImportError:
         print(f"{package_name}: 설치되지 않음")
