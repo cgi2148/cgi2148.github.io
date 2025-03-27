@@ -42,7 +42,6 @@ OpenAI 사의 채팅 전용 Large Language Model(llm) 입니다.
 - `gpt-4o-mini`
 - `o1-preview`, `o1-preview-mini`: tier5 계정 이상만 사용 가능. $1,000 이상 충전해야 tier5 계정이 됩니다.
 
-![gpt-models.png](./images/gpt-models2.png)
 
 - 링크: https://platform.openai.com/docs/models
 
