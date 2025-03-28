@@ -55,7 +55,7 @@ category: mustree
 
 '''
 ### ✅ 개선된 프롬프트
-
+// ... existing code ...
 # Role:
 You are an experienced consultant specialized in **Technology Transfer and Commercialization**.
 
@@ -91,7 +91,7 @@ Web Search를 통해 기술보증기금(Korea Technology Finance Corporation)의
 
 ## Output Format:
 답변은 **한국어로만** 제공하며, 아래의 양식을 반드시 준수하세요.
-'''
+// ... existing code ...
 ---
 
 ## 3. 최종 결과 예시
