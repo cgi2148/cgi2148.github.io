@@ -21,7 +21,7 @@ category: mustree
 ## 1. 시행착오
 
 ### ❌ 문제 1: 언어 혼선
-![문제1_언어혼선](/assets/images/mustree/problem1.png)
+![문제1_언어혼선](/assets/images/mustree/1.png)
 > GPT는 영어로 프롬프트를 받고 출력만 한글로 하도록 설계했지만  
 후속 질문이나 반응이 영어로 돌아오는 경우가 발생했다.
 
@@ -31,7 +31,7 @@ category: mustree
 ---
 
 ### ❌ 문제 2: 웹사이트 정보만 요약하고 끝남
-![문제2_요약문제](/assets/images/mustree/problem2.png)
+![문제2_요약문제](/assets/images/mustree/2.png)
 > 사용자가 회사 웹사이트 링크를 제공하면 GPT가  
 **회사 소개만 요약**하고, 실제 해야 할 작업(기술 추천, 로드맵 작성)을 하지 않았다.
 
@@ -41,7 +41,7 @@ category: mustree
 ---
 
 ### ❌ 문제 3: 한글 프롬프트에서도 동일한 현상 반복
-![문제3_한글프롬프트](/assets/images/mustree/problem3.png)
+![문제3_한글프롬프트](/assets/images/mustree/3.png)
 > 프롬프트를 한국어로 바꾸고 단계별 작업을 명시했음에도 불구하고  
 여전히 회사 소개 요약만 하고, 핵심 작업은 생략되었다.
 
@@ -108,7 +108,7 @@ Web Search를 통해 기술보증기금(Korea Technology Finance Corporation)의
 
 ---
 
-## 💬 피드백 (by GPT)
+## 💬 피드백 (by ChatGPT)
 
 > 이 프롬프트 개선은 GPT의 기본 동작 습성(요약 → 끝)을 완전히 제어하고,  
 사용자 목적 중심의 응답 흐름을 강제할 수 있다는 점에서 매우 훌륭합니다.  
