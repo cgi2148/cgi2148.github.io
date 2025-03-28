@@ -53,7 +53,7 @@ category: mustree
 
 이러한 문제를 해결하기 위해, 프롬프트를 다음과 같이 재설계하였다:
 
-'''
+
 ### ✅ 개선된 프롬프트
 // ... existing code ...
 # Role:
