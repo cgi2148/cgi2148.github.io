@@ -7,11 +7,8 @@ category: mustree
 
 # 판매용 텍스트 자동 생성 시스템 구축기
 
-<div align="center">
-![웹 기술 스택]({{ site.baseurl }}/assets/images/mustree/그림1.png)
-
-*HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택*
-</div>
+![웹 기술 스택](/assets/images/mustree/그림1.png)
+<center><em>HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택</em></center>
 
 ## 개요
 
@@ -37,11 +34,8 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 | OpenAI Assistant API| 텍스트 생성 로직 구성 및 호출 |
 | Prompt Engineering  | 키워드 중심, SEO 최적화 프롬프트 구조 설계 |
 
-<div align="center">
-![시스템 아키텍처]({{ site.baseurl }}/assets/images/mustree/통신흐름도.png)
-
-*클라이언트-서버-AI API 연동 아키텍처*
-</div>
+![시스템 아키텍처](/assets/images/mustree/통신흐름도.png)
+<center><em>클라이언트-서버-AI API 연동 아키텍처</em></center>
 
 ## 구현 과정
 
@@ -53,17 +47,11 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 
 ### 2. 사용자 인터페이스 개발
 
-<div align="center">
-![판매글 생성기 UI - 모던 카드 스타일]({{ site.baseurl }}/assets/images/mustree/모던카드.png)
+![판매글 생성기 UI - 모던 카드 스타일](/assets/images/mustree/모던카드.png)
+<center><em>판매글 생성기 UI - 모던 카드 스타일 디자인</em></center>
 
-*판매글 생성기 UI - 모던 카드 스타일 디자인*
-</div>
-
-<div align="center">
-![판매글 생성기 UI - 입력 폼]({{ site.baseurl }}/assets/images/mustree/무제.png)
-
-*판매글 생성기 UI - 상세 입력 폼*
-</div>
+![판매글 생성기 UI - 입력 폼](/assets/images/mustree/무제.png)
+<center><em>판매글 생성기 UI - 상세 입력 폼</em></center>
 
 - 초기 UI는 Claude를 활용해 마크업 구현
 - 사용자의 피드백을 반영하여 필수 입력 항목을 확장 (예: 말투, 계절감 등)
