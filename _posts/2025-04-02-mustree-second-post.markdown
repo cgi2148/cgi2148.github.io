@@ -48,7 +48,7 @@ category: mustree
   - `"애플 주식 분석해줘"`
   - `"나스닥 선물 지수 전망은?"`
 
-![AI 시장 분석 인터페이스](/assets/images/mustree/분석.png)
+![AI 시장 분석 인터페이스](/assets/images/mustree/분석.png)  
 *AI 기반 금융 시장 분석 플랫폼의 사용자 인터페이스*
 
 ### 2. 시장 데이터 분석
