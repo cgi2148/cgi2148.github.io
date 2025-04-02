@@ -8,14 +8,15 @@ category: mustree
 # 판매용 텍스트 자동 생성 시스템 구축기
 
 <div align="center">
-![웹 기술 스택](/assets/images/그림1.png)
+![웹 기술 스택](/assets/images/mustree/그림1.png)
 
 *HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택*
 </div>
 
 ## 개요
 
-의류 전자상거래에서 고객에게 매력적인 상품 소개는 구매 전환율을 높이는 핵심 요소입니다. 그러나 수천 개에 이르는 상품마다 별도의 판매 텍스트를 작성하는 것은 막대한 인력과 시간이 소요됩니다. 이에 본 프로젝트는 생성형 AI를 활용하여 상품 상세페이지의 텍스트를 자동으로 생성하는 시스템을 개발하고, 이를 실제 업무 환경에 적용하여 효율성을 검증했습니다.
+의류 전자상거래에서 고객에게 매력적인 상품 소개는 구매 전환율을 높이는 핵심 요소입니다. 그러나 수천 개에 이르는 상품마다 별도의 판매 텍스트를 작성하는 것은 막대한 인력과 시간이 소요됩니다.  
+이에 본 프로젝트는 생성형 AI를 활용하여 상품 상세페이지의 텍스트를 자동으로 생성하는 시스템을 개발하고, 이를 실제 업무 환경에 적용하여 효율성을 검증했습니다.
 
 Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍스트 자동 생성, UI/UX 구현, 시스템 성능 평가, 개선 피드백 루프 구성까지 전반적인 시스템 구축 및 실험을 수행했습니다.
 
@@ -37,7 +38,7 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 | Prompt Engineering  | 키워드 중심, SEO 최적화 프롬프트 구조 설계 |
 
 <div align="center">
-![시스템 아키텍처](/assets/images/통신흐름도.png)
+![시스템 아키텍처](/assets/images/mustree/통신흐름도.png)
 
 *클라이언트-서버-AI API 연동 아키텍처*
 </div>
@@ -53,13 +54,13 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 ### 2. 사용자 인터페이스 개발
 
 <div align="center">
-![판매글 생성기 UI - 모던 카드 스타일](/assets/images/모던카드.png)
+![판매글 생성기 UI - 모던 카드 스타일](/assets/images/mustree/모던카드.png)
 
 *판매글 생성기 UI - 모던 카드 스타일 디자인*
 </div>
 
 <div align="center">
-![판매글 생성기 UI - 입력 폼](/assets/images/무제.png)
+![판매글 생성기 UI - 입력 폼](/assets/images/mustree/무제.png)
 
 *판매글 생성기 UI - 상세 입력 폼*
 </div>
@@ -67,16 +68,27 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 - 초기 UI는 Claude를 활용해 마크업 구현
 - 사용자의 피드백을 반영하여 필수 입력 항목을 확장 (예: 말투, 계절감 등)
 
-### 3. 텍스트 생성 로직 및 프롬프트 엔지니어링
+### 3. 프롬프트 설계에서 고려한 핵심 요소
 
-- 키워드 삽입, 어조 선택, SEO 최적화 구조 설계
-- Claude는 표현력이 풍부하나 다소冗長한 경향, GPT-4o는 간결하고 명확한 문장에 강점
-```python  
+- **SEO 최적화**: 검색 노출을 위한 핵심 키워드 삽입
+- **제품 특성 강조**: 의류의 핏, 소재, 계절감 등을 문장 내에 자연스럽게 반영
+- **문장 어조 설정**: 타겟 고객층에 맞는 말투 및 분위기 설정  
+  예: `캐주얼한 느낌의` vs. `세련된 감성의`
+
+### Claude와 GPT-4o 결과물 비교
+
+| 항목              | Claude                                  | GPT-4o                             |
+|-------------------|------------------------------------------|------------------------------------|
+| 문장 다양성       | ✅ 표현이 풍부하고 묘사적임                | ◻️ 비교적 간결하고 구조화됨         |
+| 불필요한 문장 포함 | ⚠️ 일부 문장 장황(중복 또는 과한 묘사 포함) | ✅ 간결한 표현 유지                 |
+| 문법 정확도       | ◻️ 다소 부자연스러운 종결 어미 포함 가능성 | ✅ 한국어 문법 및 종결어미 처리 상대적 우수 |
+
+```plaintext
 Prompt List
 1.You are an E-commerce SEO expert and a highly ex  perienced marketer and clothin g retailer with extensive experience in selling apparel both in online stores and second-hand markets.
 2.our role is to generate keyword-rich, informative, and captivating product summaries that effectively market products to potential buyers. 
 3. You write in Korean, using emotional and persuasive language to highlight the product's benefits and appeal. 
-4. Your goal is to create engaging content sections with eye-catching subheadings, H1 headings, broad match keywords, and a persuasive  Description. 
+4. Your goal is to create engaging content sections with eye-catching subheadings, H1 headings, broad match keywords, and a persuasive Description. 
 5. You will receive a brief description of the product, its uses, target age group, desired tone for the writing, product type, style, material, usage scenarios, and any additional notes. 
 6. Based on this information, you will adjust the length of the description accordingly and generate a slightly different version with each refresh.
 7. If the product is second-hand, include an imaginative backstory detailing why it is being sold and how it was used.
@@ -91,8 +103,8 @@ Prompt List
 16. Unify the tone and final endings of the description (e.g., if using sentence form, use it throughout).
 17. Minimize repetitions of identical or similar words or content.
 18. Vary the tone based on selected conditions. For example, if 'concise' is chosen, avoid endings like ~입니다, ~합니다, and aim for a tone that ends with nouns.
+```
 
-``
 ### 4. 서버 구축 및 통신 안정화
 
 - 비동기 처리 및 예외 핸들링 로직 구현
@@ -135,7 +147,9 @@ Prompt List
 
 ## 결론 및 향후 방향
 
-본 프로젝트는 생성형 AI가 반복적인 콘텐츠 생산을 자동화할 수 있는 실질적 가능성을 입증했습니다. 전자상거래 업계에서의 적용뿐 아니라, 다양한 산업 분야에서도 유사한 형태로 확장될 수 있을 것입니다. 향후에는 이미지 기반 설명 생성, 멀티모달 입력을 활용한 텍스트 품질 향상 등을 중심으로 후속 연구를 진행할 예정입니다.
+본 프로젝트는 생성형 AI가 반복적인 콘텐츠 생산을 자동화할 수 있는 실질적 가능성을 입증했습니다.  
+이는 전자상거래 업계에서의 적용뿐 아니라, 다양한 산업 분야에서도 유사한 형태로 확장될 수 있을 것입니다.  
+향후에는 이미지 기반 설명 생성, 멀티모달 입력을 활용한 텍스트 품질 향상 등을 중심으로 후속 연구를 진행할 예정입니다.  
 
 ## 사용된 기술 스택
 
