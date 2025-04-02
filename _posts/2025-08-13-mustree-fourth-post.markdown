@@ -8,7 +8,7 @@ category: mustree
 # 판매용 텍스트 자동 생성 시스템 구축기
 
 <center>
-<img src="/assets/images/mustree/그림1.png" width="500" alt="웹 기술 스택">  
+<img src="/assets/images/mustree/그림1.png" width="500" alt="웹 기술 스택">    
 <em>HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택</em>
 </center>
 
@@ -37,7 +37,7 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 | Prompt Engineering  | 키워드 중심, SEO 최적화 프롬프트 구조 설계 |
 
 <center>
-<img src="/assets/images/mustree/통신흐름도.png" width="600" alt="시스템 아키텍처">  
+<img src="/assets/images/mustree/통신흐름도.png" width="600" alt="시스템 아키텍처">    
 <em>클라이언트-서버-AI API 연동 아키텍처</em>
 </center>
 
@@ -52,12 +52,12 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 ### 2. 사용자 인터페이스 개발
 
 <center>
-<img src="/assets/images/mustree/모던카드.png" width="600" alt="판매글 생성기 UI - 모던 카드 스타일">  
+<img src="/assets/images/mustree/모던카드.png" width="600" alt="판매글 생성기 UI - 모던 카드 스타일">    
 <em>판매글 생성기 UI - 모던 카드 스타일 디자인</em>
 </center>
 
 <center>
-<img src="/assets/images/mustree/무제.png" width="600" alt="판매글 생성기 UI - 입력 폼">  
+<img src="/assets/images/mustree/무제.png" width="600" alt="판매글 생성기 UI - 입력 폼">    
 <em>판매글 생성기 UI - 상세 입력 폼</em>
 </center>
 
