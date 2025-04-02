@@ -7,7 +7,9 @@ category: mustree
 
 # 판매용 텍스트 자동 생성 시스템 구축기
 
-![웹 기술 스택](/assets/images/mustree/그림1.png)
+<p align="center">
+<img src="/assets/images/mustree/그림1.png" width="800" alt="웹 기술 스택">
+</p>
 <center><em>HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택</em></center>
 
 ## 개요
@@ -34,7 +36,9 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 | OpenAI Assistant API| 텍스트 생성 로직 구성 및 호출 |
 | Prompt Engineering  | 키워드 중심, SEO 최적화 프롬프트 구조 설계 |
 
-![시스템 아키텍처](/assets/images/mustree/통신흐름도.png)
+<p align="center">
+<img src="/assets/images/mustree/통신흐름도.png" width="800" alt="시스템 아키텍처">
+</p>
 <center><em>클라이언트-서버-AI API 연동 아키텍처</em></center>
 
 ## 구현 과정
@@ -47,10 +51,14 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 
 ### 2. 사용자 인터페이스 개발
 
-![판매글 생성기 UI - 모던 카드 스타일](/assets/images/mustree/모던카드.png)
+<p align="center">
+<img src="/assets/images/mustree/모던카드.png" width="800" alt="판매글 생성기 UI - 모던 카드 스타일">
+</p>
 <center><em>판매글 생성기 UI - 모던 카드 스타일 디자인</em></center>
 
-![판매글 생성기 UI - 입력 폼](/assets/images/mustree/무제.png)
+<p align="center">
+<img src="/assets/images/mustree/무제.png" width="800" alt="판매글 생성기 UI - 입력 폼">
+</p>
 <center><em>판매글 생성기 UI - 상세 입력 폼</em></center>
 
 - 초기 UI는 Claude를 활용해 마크업 구현
