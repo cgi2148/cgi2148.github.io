@@ -48,25 +48,25 @@ category: mustree
   - `"애플 주식 분석해줘"`
   - `"나스닥 선물 지수 전망은?"`
 
-<center>
-<img src="/assets/images/mustree/분석.png" width="500" alt="AI 시장 분석 인터페이스">
-<em>AI 기반 금융 시장 분석 플랫폼의 사용자 인터페이스</em>
-</center>
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/분석.png" width="500" alt="AI 시장 분석 인터페이스">
+  <p style="margin-top: 10px;"><em>AI 기반 금융 시장 분석 플랫폼의 사용자 인터페이스</em></p>
+</div>
 
 ### 2. 시장 데이터 분석
 
 - Yahoo Finance에서 실시간 주가 데이터를 수집하여 제공합니다.
 - 기술적 지표를 계산해 시장 상황을 종합적으로 분석합니다.
 
-<center>
-<img src="/assets/images/mustree/설명1.png" width="500" alt="기술적 지표 분석 1">
-<em>MACD, RSI 등 주요 기술적 지표 분석 결과</em>
-</center>
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/설명1.png" width="500" alt="기술적 지표 분석 1">
+  <p style="margin-top: 10px;"><em>MACD, RSI 등 주요 기술적 지표 분석 결과</em></p>
+</div>
 
-<center>
-<img src="/assets/images/mustree/설명2.png" width="500" alt="기술적 지표 분석 2">
-<em>변동성 등 주요 기술적 지표 분석 결과 예시</em>
-</center>
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/설명2.png" width="500" alt="기술적 지표 분석 2">
+  <p style="margin-top: 10px;"><em>변동성 등 주요 기술적 지표 분석 결과 예시</em></p>
+</div>
 
 ### 3. 제공되는 기술적 분석 지표
 
