@@ -8,7 +8,7 @@ category: mustree
 # 판매용 텍스트 자동 생성 시스템 구축기
 
 <center>
-<img src="/assets/images/mustree/그림1.png" width="400" alt="웹 기술 스택">
+<img src="/assets/images/mustree/그림1.png" width="500" alt="웹 기술 스택">
 <em>HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택</em>
 </center>
 
@@ -37,7 +37,7 @@ Claude 3.5 Sonnet, GPT-4o 등 최신 LLM을 통합하여 사용자 맞춤형 텍
 | Prompt Engineering  | 키워드 중심, SEO 최적화 프롬프트 구조 설계 |
 
 <center>
-<img src="/assets/images/mustree/통신흐름도.png" width="500" alt="시스템 아키텍처">
+<img src="/assets/images/mustree/통신흐름도.png" width="400" alt="시스템 아키텍처">
 <em>클라이언트-서버-AI API 연동 아키텍처</em>
 </center>
 
