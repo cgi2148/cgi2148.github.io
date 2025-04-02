@@ -57,7 +57,7 @@ category: mustree
 - 기술적 지표를 계산해 시장 상황을 종합적으로 분석합니다.
 
 ![기술적 지표 분석](/assets/images/mustree/설명1.png)
-![기술적 지표 분석](/assets/images/mustree/설명2.png)
+![기술적 지표 분석](/assets/images/mustree/설명2.png)  
 *MACD, RSI, 변동성 등 주요 기술적 지표 분석 결과 예시*
 
 ### 3. 제공되는 기술적 분석 지표
