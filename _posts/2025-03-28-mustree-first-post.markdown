@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ChatGPT를 활용한 기술 매칭 솔루션 개발기 1"
+title: "ChatGPT를 활용한 기술 매칭 솔루션 개발기"
 date: 2025-03-28 12:30:00 +0900
 category: mustree
 ---
