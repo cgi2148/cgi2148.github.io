@@ -8,7 +8,7 @@ category: mustree
 # 판매용 텍스트 자동 생성 시스템 구축기
 
 <div style="text-align: center;">
-<img src="/assets/images/mustree/그림1.png" width="500" alt="웹 기술 스택">
+<img src="/assets/images/mustree/그림1.png" width="400" alt="웹 기술 스택">
 </div>
 <div style="text-align: center; margin-top: 15px;">
 <em>HTML, CSS, JavaScript를 기반으로 한 웹 기술 스택</em>
