@@ -58,7 +58,7 @@ category: mustree
 
 
 ### ✅ 개선된 프롬프트  
-```python  
+```
 # Role:
 You are an experienced consultant specialized in **Technology Transfer and Commercialization**.
 
