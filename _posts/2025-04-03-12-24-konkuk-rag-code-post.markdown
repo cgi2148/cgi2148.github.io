@@ -122,7 +122,7 @@ model = ChatOpenAI(
 
 ### LCEL(LangChain Expression Language)
 
-![lcel.png](.assets/images/mustree/lcel.png)
+![lcel.png](/assets/images/mustree/lcel.png)
 
 여기서 우리는 LCEL을 사용하여 다양한 구성 요소를 단일 체인으로 결합합니다
 
