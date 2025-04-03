@@ -22,11 +22,6 @@ load_dotenv()
 
 
 
-    True
-
-
-
-
 ```python
 # LangSmith 추적을 설정합니다. https://smith.langchain.com
 # !pip install -qU langchain-teddynote
@@ -35,10 +30,6 @@ from langchain_teddynote import logging
 # 프로젝트 이름을 입력합니다.
 logging.langsmith("CH01-Basic")
 ```
-
-    LangSmith 추적을 시작합니다.
-    [프로젝트명]
-    CH01-Basic
 
 
 ## 프롬프트 템플릿의 활용
