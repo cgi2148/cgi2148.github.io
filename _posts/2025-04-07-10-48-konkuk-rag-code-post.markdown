@@ -75,3 +75,4 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 
 splits = text_splitter.split_documents(docs)
+```
