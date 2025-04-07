@@ -36,9 +36,9 @@ MMR 알고리즘은 다음 두 가지 요소를 기준으로 작동합니다:
 
 MMR 알고리즘은 다음 수식으로 표현됩니다:
 
-```
-MMR = argmax_{Dᵢ ∈ R \ S} [ λ ⋅ Sim₁(Dᵢ, Q) − (1 − λ) ⋅ max_{Dⱼ ∈ S} Sim₂(Dᵢ, Dⱼ) ]
-```
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/mmr.png">
+</div>
 
 - **Dᵢ**: 선택 가능한 문서  
 - **R**: 전체 검색 결과 집합  
