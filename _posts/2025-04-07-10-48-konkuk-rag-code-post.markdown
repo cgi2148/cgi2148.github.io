@@ -17,7 +17,7 @@ categories: [konkuk, rag]
 
 > 구글이 앤스로픽에 투자한 금액은 얼마야?  
 <div style="text-align: center;">
-  <img src="/assets/images/mustree/텍스트 분할1.png">
+  <img src="/assets/images/mustree/텍스트분할 1.png">
 </div>
 ---
 
@@ -53,7 +53,7 @@ categories: [konkuk, rag]
 
 ## 🔁 청크 크기 & 청크 오버랩  
 <div style="text-align: center;">
-  <img src="/assets/images/mustree/텍스트 분할2.png">
+  <img src="/assets/images/mustree/텍스트분할 2.png">
 </div>  
 
 | 설정 항목         | 설명                                                    |
