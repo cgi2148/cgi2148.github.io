@@ -39,7 +39,14 @@
 					{% endif %}
 				{% endfor %}
 				
-				{% assign total_konkuk_posts = rag_posts.size | plus: rag_code_posts.size %}
+				{% assign mcp_posts = "" | split: "" %}
+				{% for post in site.posts %}
+					{% if post.categories contains "mcp" %}
+						{% assign mcp_posts = mcp_posts | push: post %}
+					{% endif %}
+				{% endfor %}
+				
+				{% assign total_konkuk_posts = rag_posts.size | plus: rag_code_posts.size | plus: mcp_posts.size %}
 				<li>
 					<a class="nav-item parent-category" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
 						<span class="name">Konkuk</span>
@@ -63,6 +70,15 @@
 							</a>
 						</li>
 					{% endif %}
+					{% if mcp_posts.size > 0 %}
+						<li class="subcategory">
+							<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#mcp" data-category="mcp">
+								<span class="arrow">└</span>
+								<span class="name">MCP</span>
+								<span class="badge">{{ mcp_posts.size }}</span>
+							</a>
+						</li>
+					{% endif %}
 				</li>
 			{% elsif cat_name == "mustree" %}
 				{% assign mustree_posts = "" | split: "" %}
@@ -77,7 +93,7 @@
 						<span class="badge">{{ mustree_posts.size }}</span>
 					</a>
 				</li>
-			{% elsif cat_name != "rag" and cat_name != "rag-code" %}
+			{% elsif cat_name != "rag" and cat_name != "rag-code" and cat_name != "mcp" %}
 				<li>
 					<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
 						<span class="name">{{ cat_name }}</span>
@@ -108,8 +124,8 @@ function updateActiveCategory() {
 		if (activeItem) {
 			activeItem.classList.add('active');
 			
-			// 만약 RAG 카테고리가 선택되었다면 상위 카테고리(konkuk)도 활성화
-			if (hash === 'rag' || hash === 'rag-code') {
+			// 만약 하위 카테고리가 선택되었다면 상위 카테고리(konkuk)도 활성화
+			if (hash === 'rag' || hash === 'rag-code' || hash === 'mcp') {
 				var parentItem = document.querySelector('.nav-item[data-category="konkuk"]');
 				if (parentItem) {
 					parentItem.classList.add('active');
