@@ -52,7 +52,6 @@ MCP는 이러한 문제를 해결하기 위해 등장했습니다. 기존의 개
 
 ## MCP와 기존 연동 방식의 차이점 (기술/운용 관점)
 
-![MCP 비교 다이어그램]
 <div style="text-align: center;">
   <img src="/assets/images/mustree/MCP1.png">
 </div>
