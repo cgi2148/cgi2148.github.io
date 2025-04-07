@@ -42,6 +42,17 @@ plugins:
 category_dir: category/
 tag_dir: tag/
 
+# 포스트 검색 디렉토리 설정
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title/
+
+# 포스트 경로 설정
+include:
+  - konkuk
+  - mustree
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
