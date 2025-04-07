@@ -2,7 +2,7 @@
 layout: post
 title: "Retrieval-Augmented Generation (RAG)"
 date: 2025-04-07 10:03:00 +0900
-categories: [konkuk, rag-code]
+categories: [konkuk, rag]
 ---
 
 # Retrieval-Augmented Generation (RAG)
