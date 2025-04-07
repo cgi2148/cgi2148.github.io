@@ -25,7 +25,7 @@ categories: [konkuk, mcp]
 
 MCP는 이러한 문제를 해결하기 위해 등장했습니다. 기존의 개별 통합 방식과 달리 MCP는 하나의 보편적 프로토콜을 사용하여 AI와 각종 시스템을 연결합니다  
 [anthropic.com](https://www.anthropic.com)  
-비유하자면, 여러 개의 다른 언어를 쓰는 사람들 사이에 **하나의 공통 언어(에스페란토와 같은)**를 도입해 소통 문제를 한 번에 해소하는 격입니다. 기존 AI 연동이 각 시스템 쌍마다 별도 인터페이스를 구현하는 복잡도 M×N 문제였다면, MCP 도입으로 M+N 문제로 단순화됩니다  
+비유하자면, 여러 개의 다른 언어를 쓰는 사람들 사이에 **하나의 공통 언어**를 도입해 소통 문제를 한 번에 해소하는 격입니다. 기존 AI 연동이 각 시스템 쌍마다 별도 인터페이스를 구현하는 복잡도 M×N 문제였다면, MCP 도입으로 M+N 문제로 단순화됩니다  
 [philschmid.de](https://www.philschmid.de)  
 [philschmid.de](https://www.philschmid.de)  
 
