@@ -49,9 +49,9 @@ collections:
     permalink: /:categories/:year/:month/:day/:title/
 
 # 포스트 경로 설정
-include:
-  - konkuk
-  - mustree
+# include:
+#   - konkuk
+#   - mustree
 
 # Exclude from processing.
 # The following items will not be processed, by default.
