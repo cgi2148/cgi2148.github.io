@@ -2,7 +2,7 @@
 layout: post
 title: "Retrieval-Augmented Generation (RAG)"
 date: 2025-04-07 10:03:00 +0900
-categories: [konkuk, rag]
+categories: [konkuk, rag-code]
 ---
 
 # Retrieval-Augmented Generation (RAG)
@@ -18,6 +18,7 @@ categories: [konkuk, rag]
 ## RAG의 8단계 프로세스
 
 ### 사전 준비 단계
+
 
 1. **도큐먼트 로더 (Document Loader)**  
    이 단계에서는 외부 데이터 소스에서 필요한 문서를 로드하고 초기 처리를 합니다.  
@@ -35,9 +36,10 @@ categories: [konkuk, rag]
 4. **벡터스토어(Vector Store) 저장**  
    임베딩된 벡터들을 데이터베이스에 저장합니다.  
    이는 요약된 키워드를 색인화하여 나중에 빠르게 찾을 수 있도록 하는 과정입니다.
-  
-### 런타임(RunTime) 단계  
 
+### 런타임(RunTime) 단계
+  
+  
 5. **검색기(Retriever)**  
    질문이 주어지면, 이와 관련된 벡터를 벡터 데이터베이스에서 검색합니다.  
    질문에 가장 잘 맞는 책의 챕터를 찾는 것과 유사합니다.
