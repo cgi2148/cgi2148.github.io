@@ -52,7 +52,10 @@ MCP는 이러한 문제를 해결하기 위해 등장했습니다. 기존의 개
 
 ## MCP와 기존 연동 방식의 차이점 (기술/운용 관점)
 
-![MCP 비교 다이어그램](/assets/images/mcp/mcp-comparison.png)
+![MCP 비교 다이어그램]
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/MCP1.png">
+</div>
 
 > 왼쪽은 LLM이 Slack, 구글드라이브, GitHub 등 각 시스템마다 별도의 API 연동을 해야 하는 기존 방식이고, 오른쪽은 MCP 도입 후 LLM이 **단일 표준 인터페이스(MCP)**를 통해 다양한 시스템과 연결되는 간소화된 구조입니다.
 
