@@ -24,7 +24,7 @@ MCP는 2024년 말 Anthropic社에서 공개한 개방형 표준입니다. 이�
 
 위의 Google Trends 그래프에서도 확인할 수 있듯이, MCP에 대한 관심은 불과 몇 달 사이에 급격히 증가했습니다. 
 
-이제 많은 개발자들이 **Claude Desktop 앱**과 같은 AI 인터페이스에서 MCP 기능을 활용하여 AI의 한계를 확장하고자 합니다. 특히 **Claude Desktop**은 Anthropic의 AI 비서 Claude를 PC에서 실행할 수 있는 애플리케이션으로, 2024년 말 업데이트를 통해 MCP 기능을 지원하기 시작했습니다.
+이제 많은 개발자들이 **Claude Desktop 앱**과 같은 AI 인터페이스에서 MCP 기능을 활용하여 AI의 한계를 확장하는데 특히 **Claude Desktop**은 Anthropic의 AI 비서 Claude를 PC에서 실행할 수 있는 애플리케이션으로, 2024년 말 업데이트를 통해 MCP 기능을 지원하기 시작했습니다.
 
 이번 가이드에서는 **초급 개발자**를 대상으로, Claude Desktop에서 **Smithery.ai** 플랫폼을 활용해 MCP 서버를 설치하고 사용하는 전 과정을 스크린샷과 함께 단계별로 알아보겠습니다. 
 
@@ -97,9 +97,8 @@ npm install -g mcp-crypto-price
 <div style="text-align: center;">
   <img src="/assets/images/mustree/대장간2.JPG" alt="Smithery 설정 예시 – CoinCap API 키를 입력하고 Claude Desktop과 연결하는 화면">
   <p style="text-align: center;"><em>▲ CoinCap API 키 설정 및 Claude Desktop 연결 화면</em></p>
+  <p style="text-align: center;"><em>▲ *위 이미지는 Smithery에서 CoinCap API 키를 입력하고 Claude Desktop에 연결 설정을 진행하는 화면입니다. "Connect" 버튼을 누르면 Claude Desktop 설정이 자동으로 업데이트되어 MCP 서버가 추가됩니다.*</em></p>
 </div>
-
-▲ *위 이미지는 Smithery에서 CoinCap API 키를 입력하고 Claude Desktop에 연결 설정을 진행하는 화면입니다. "Connect" 버튼을 누르면 Claude Desktop 설정이 자동으로 업데이트되어 MCP 서버가 추가됩니다.*
 
 ## Claude Desktop에서 MCP 서버 확인 및 사용
 
