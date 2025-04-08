@@ -9,28 +9,53 @@ categories: [konkuk, mcp]
 
 ## 서론
 
-인공지능 **모델 컨텍스트 프로토콜(MCP)**에 대한 관심이 최근 크게 높아지고 있습니다. MCP는 2024년 말 Anthropic社에서 공개한 개방형 표준으로, **AI 모델이 다양한 외부 도구나 데이터 소스와 상호작용하는 방식을 표준화한 프로토콜**입니다 [Model Context Protocol 가이드](https://medium.com/data-and-beyond/the-model-context-protocol-mcp-the-ultimate-guide-c40539e2a8e7). 쉽게 말해 AI 분야의 "USB-C 표준"에 비유되는데, 서로 다른 기계 장치를 USB-C로 간편히 연결하듯 **MCP를 통해 AI 모델을 여러 서비스나 툴과 한 번에 연결**할 수 있습니다 [MCP 공식 소개](https://modelcontextprotocol.io). 이를 활용하면 AI 비서가 웹 검색, 파일 탐색, 데이터베이스 조회 등 다양한 작업을 직접 수행하게 할 수 있어 활용도가 크게 향상됩니다 [Model Context Protocol 개발 가이드](https://tldv.io/blog/model-context-protocol/). 실제로 MCP 등장 이후 AI 커뮤니티에서 "게임 체인저"라는 평가를 받으며 빠르게 주목받고 있습니다 [MCP 영향력](https://tldv.io/blog/model-context-protocol/). 
+인공지능 **모델 컨텍스트 프로토콜(MCP)**에 대한 관심이 최근 크게 높아지고 있습니다. 
+
+MCP는 2024년 말 Anthropic社에서 공개한 개방형 표준입니다. 이는 **AI 모델이 다양한 외부 도구나 데이터 소스와 상호작용하는 방식을 표준화한 프로토콜**입니다. 
+
+쉽게 말해 AI 분야의 "USB-C 표준"에 비유됩니다. 서로 다른 기계 장치를 USB-C로 간편히 연결하듯 **MCP를 통해 AI 모델을 여러 서비스나 툴과 한 번에 연결**할 수 있습니다 [MCP 공식 소개](https://modelcontextprotocol.io). 
+
+이를 활용하면 AI 비서가 웹 검색, 파일 탐색, 데이터베이스 조회 등 다양한 작업을 직접 수행하게 할 수 있어 활용도가 크게 향상됩니다. 실제로 MCP 등장 이후 AI 커뮤니티에서 "게임 체인저"라는 평가를 받으며 빠르게 주목받고 있습니다.
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/구글트렌드.png" alt="최근 1년간 'Model Context Protocol (MCP)'에 대한 Google 검색 관심도 추이 (상승세를 보이고 있음)">
+  <p style="text-align: center;"><em>▲ Google Trends로 본 MCP 관심도 추이</em></p>
 </div>
 
-위의 Google Trends 그래프에서도 확인할 수 있듯이, MCP에 대한 관심은 불과 몇 달 사이에 급격히 증가했습니다. 이제 많은 개발자들이 **Claude Desktop 앱**과 같은 AI 인터페이스에서 MCP 기능을 활용하여 AI의 한계를 확장하고자 합니다. 특히 **Claude Desktop**은 Anthropic의 AI 비서 Claude를 PC에서 실행할 수 있는 애플리케이션으로, 2024년 말 업데이트를 통해 MCP 기능을 지원하기 시작했습니다 [Claude Desktop MCP 워크플로우 자동화](https://medium.com/@mknebel/how-to-automate-your-workflow-wtih-claude-desktop-and-mcp-servers-5072844b86d1). 이번 가이드에서는 **초급 개발자**를 대상으로, Claude Desktop에서 **Smithery.ai** 플랫폼을 활용해 MCP 서버를 설치하고 사용하는 전 과정을 스크린샷과 함께 단계별로 알아보겠습니다. 예제로는 암호화폐 시세와 시장 동향을 분석해주는 **"Crypto Price & Market Analysis" MCP 서버**를 설치해 실제로 비트코인 변동성을 분석해보겠습니다. 자, 차근차근 시작해봅시다!
+위의 Google Trends 그래프에서도 확인할 수 있듯이, MCP에 대한 관심은 불과 몇 달 사이에 급격히 증가했습니다. 
+
+이제 많은 개발자들이 **Claude Desktop 앱**과 같은 AI 인터페이스에서 MCP 기능을 활용하여 AI의 한계를 확장하고자 합니다. 특히 **Claude Desktop**은 Anthropic의 AI 비서 Claude를 PC에서 실행할 수 있는 애플리케이션으로, 2024년 말 업데이트를 통해 MCP 기능을 지원하기 시작했습니다.
+
+이번 가이드에서는 **초급 개발자**를 대상으로, Claude Desktop에서 **Smithery.ai** 플랫폼을 활용해 MCP 서버를 설치하고 사용하는 전 과정을 스크린샷과 함께 단계별로 알아보겠습니다. 
+
+예제로는 암호화폐 시세와 시장 동향을 분석해주는 **"Crypto Price & Market Analysis" MCP 서버**를 설치해 실제로 비트코인 변동성을 분석해보겠습니다.
 
 ## Smithery.ai와 MCP 서버 소개
 
-본격적인 설치에 앞서, **Smithery.ai**에 대해 간략히 알아보겠습니다. Smithery.ai는 MCP 서버들을 모아놓은 **MCP 서버 레지스트리 플랫폼**입니다. 전세계 개발자들이 만든 다양한 MCP 서버 패키지들이 이 레지스트리에 공유되어 있으며, 필요한 기능을 검색하고 상세 정보를 볼 수 있습니다. 2025년 3월 기준 Smithery에는 4천 개가 넘는 MCP 서버가 등록되어 있으며 [Smithery 레지스트리](https://smithery.ai), 파일 시스템 접근, 웹 검색, 데이터베이스, 코딩 보조, 서드파티 API 연동 등 그 종류도 매우 다양합니다. Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE, Windsurf 등)에서 Smithery의 MCP 서버를 손쉽게 설치해 활용할 수 있습니다.
+본격적인 설치에 앞서, **Smithery.ai**에 대해 간략히 알아보겠습니다. 
+
+Smithery.ai는 MCP 서버들을 모아놓은 **MCP 서버 레지스트리 플랫폼**입니다. 전세계 개발자들이 만든 다양한 MCP 서버 패키지들이 이 레지스트리에 공유되어 있으며, 필요한 기능을 검색하고 상세 정보를 볼 수 있습니다.
+
+2025년 3월 기준 Smithery에는 4천 개가 넘는 MCP 서버가 등록되어 있습니다. 파일 시스템 접근, 웹 검색, 데이터베이스, 코딩 보조, 서드파티 API 연동 등 그 종류도 매우 다양합니다.
+
+Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE, Windsurf 등)에서 Smithery의 MCP 서버를 손쉽게 설치해 활용할 수 있습니다.
 
 예를 들어 Smithery 메인 페이지에 접속하면 아래와 같은 **서버 목록 UI**를 볼 수 있습니다. 이 화면에서 원하는 기능을 키워드로 검색하거나 카테고리별로 MCP 서버를 탐색할 수 있습니다.
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/대장간홈.JPG" alt="Smithery.ai 메인 화면 – 다양한 MCP 서버들이 카테고리별로 나열되어 있다. 검색창을 통해 원하는 MCP 서버를 찾을 수 있다.">
+  <p style="text-align: center;"><em>▲ Smithery.ai의 메인 화면과 서버 목록</em></p>
 </div>
 
-위 이미지에서 보이듯이, Smithery 상단 검색창에 키워드를 입력하면 관련 MCP 서버들을 찾아줍니다. 이제 우리가 예제로 사용할 **Crypto Price & Market Analysis** MCP 서버를 찾아보겠습니다. Smithery 검색창에 `"Crypto Price"` 또는 관련 단어를 입력하면 해당 MCP 서버를 찾을 수 있습니다. 검색 결과에서 **"Crypto Price & Market Analysis Server"**를 선택하면 아래와 같은 **서버 상세 페이지**로 이동합니다.
+위 이미지에서 보이듯이, Smithery 상단 검색창에 키워드를 입력하면 관련 MCP 서버들을 찾아줍니다.
+
+이제 우리가 예제로 사용할 **Crypto Price & Market Analysis** MCP 서버를 찾아보겠습니다. Smithery 검색창에 `"Crypto Price"` 또는 관련 단어를 입력하면 해당 MCP 서버를 찾을 수 있습니다.
+
+검색 결과에서 **"Crypto Price & Market Analysis Server"**를 선택하면 아래와 같은 **서버 상세 페이지**로 이동합니다.
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/대장간1.JPG" alt="Smithery에서 'Crypto Price & Market Analysis' MCP 서버 상세 페이지. CoinCap API 키 입력 필드와 Claude Desktop 등 설치 옵션이 보인다.">
+  <p style="text-align: center;"><em>▲ Crypto Price & Market Analysis MCP 서버 상세 페이지</em></p>
 </div>
 
 해당 페이지에는 서버에 대한 소개와 함께, 사용할 클라이언트(예: Anthropic Claude)를 선택해 **설치 구성 정보를 확인**할 수 있는 인터페이스가 제공됩니다. 위 이미지의 예시에서 **Anthropic Claude**를 선택하면, 이 서버를 Claude Desktop에 연결하기 위한 설정 옵션들이 나타납니다. 또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 제공해야 함**을 의미합니다. (CoinCap은 무료로 시세 조회 API를 제공하지만, API 키를 사용하면 더 높은 쿼터로 최신 V3 API를 이용할 수 있습니다. API 키가 없을 경우 구버전인 V2 API로 동작하나 곧 종료될 예정이므로 가능하면 키를 발급받는 것이 좋습니다 [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)
@@ -71,6 +96,7 @@ npm install -g mcp-crypto-price
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/대장간2.JPG" alt="Smithery 설정 예시 – CoinCap API 키를 입력하고 Claude Desktop과 연결하는 화면">
+  <p style="text-align: center;"><em>▲ CoinCap API 키 설정 및 Claude Desktop 연결 화면</em></p>
 </div>
 
 ▲ *위 이미지는 Smithery에서 CoinCap API 키를 입력하고 Claude Desktop에 연결 설정을 진행하는 화면입니다. "Connect" 버튼을 누르면 Claude Desktop 설정이 자동으로 업데이트되어 MCP 서버가 추가됩니다.*
@@ -86,6 +112,7 @@ MCP 서버 설정을 마쳤다면, Claude Desktop 내에서 해당 서버가 제
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/클로드MCP2.png" alt="Claude Desktop 앱의 MCP 도구 목록 화면 – 방금 설치한 Crypto Price MCP 서버의 `get-crypto-price` 도구가 추가된 모습. 이 외에도 여러 MCP 서버들의 도구가 함께 나열되어 있다.">
+  <p style="text-align: center;"><em>▲ Claude Desktop의 MCP 도구 목록</em></p>
 </div>
 
 위 화면에서 `get-crypto-price` 옆에는 "서버: crypto" 등의 표시가 있어 해당 도구가 **어느 MCP 서버로부터 제공되는지**를 알려줍니다. 이제 이러한 도구들을 활용하여 실제로 AI에게 작업을 시킬 수 있습니다. **Claude에게 자연어로 요청을 하면, 필요한 MCP 도구를 자동으로 호출**해서 답변을 만들어냅니다. 사용자는 별도로 명령어 형식으로 도구를 실행할 필요 없이, **일반적인 질문을 던지면 Claude가 내부적으로 MCP 서버의 기능을 활용**하는 것이죠.
@@ -96,6 +123,7 @@ MCP 서버 설정을 마쳤다면, Claude Desktop 내에서 해당 서버가 제
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/클로드예시.png" alt="Claude에게 비트코인의 최근 변동성에 대해 질문한 예시. Claude가 MCP 서버를 통해 얻은 데이터를 바탕으로 현재 가격, 24시간 변동률, 거래량 등의 정보를 요약해 답변하고 있다.">
+  <p style="text-align: center;"><em>▲ Claude의 비트코인 변동성 분석 예시</em></p>
 </div>
 
 Claude의 응답 내용을 보면, **비트코인 현재 가격과 최근 변동폭**, 거래량과 시가총액 등의 지표를 언급하며 **변동성에 대한 해석**을 제공합니다. 예를 들어 (예시 응답을 재구성해보면): "현재 비트코인 가격은 약 27,300달러이고, 지난 24시간 동안 약 3.5% 하락했습니다. 거래량은 약 150억 달러로 평균 수준이며, 주요 거래소 중 Binance의 거래량이 가장 많았습니다. 최근 며칠간 가격 변동성을 보면 변동 폭이 다소 줄어들었지만, 여전히 한 주 기준 ±8% 수준의 등락을 보이고 있습니다. 이는 전월 대비 변동성이 낮아진 수치로, 시장이 점차 안정세를 찾고 있음을 시사합니다…" 라는 식으로 **MCP 서버로부터 얻은 데이터를 요약 및 해석하여 자연어 답변**을 생성합니다. 
