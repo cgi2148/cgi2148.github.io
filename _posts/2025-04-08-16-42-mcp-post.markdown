@@ -7,6 +7,7 @@ categories: [konkuk, mcp]
 
 # Claude Desktop과 Smithery.ai를 활용한 MCP 서버 설치 및 사용 가이드
 
+
 ## 서론
 
 인공지능 **모델 컨텍스트 프로토콜(MCP)**에 대한 관심이 최근 크게 높아지고 있습니다. 
@@ -29,6 +30,7 @@ MCP는 2024년 말 Anthropic에서 공개한 개방형 표준입니다. 이는 *
 이번 가이드에서는 **초급 개발자**를 대상으로, Claude Desktop에서 **Smithery.ai** 플랫폼을 활용해 MCP 서버를 설치하고 사용하는 전 과정을 스크린샷과 함께 단계별로 알아보겠습니다. 
 
 예제로는 암호화폐 시세와 시장 동향을 분석해주는 **"Crypto Price & Market Analysis" MCP 서버**를 설치해 실제로 비트코인 변동성을 분석해보겠습니다.
+
 
 ## Smithery.ai와 MCP 서버 소개
 
@@ -63,6 +65,7 @@ Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE,
 위 이미지의 예시에서 **Anthropic Claude**를 선택하면, 이 서버를 Claude Desktop에 연결하기 위한 설정 옵션들이 나타납니다. 
 
 또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 입력해야 함**을 의미합니다. [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).
+
 
 ## Crypto Price & Market Analysis MCP 서버 설치 (API 키 입력, 명령어 방식 & JSON 방식)
 
@@ -129,6 +132,7 @@ Smithery 사이트에서도 Claude Desktop 설정에 넣을 JSON 스니펫을 �
   <p style="text-align: center;"><em>▲ *위 이미지는 Smithery에서 CoinCap API 키를 입력하고 Claude Desktop에 연결 설정을 진행하는 화면입니다. "Connect" 버튼을 누르면 Claude Desktop 설정이 자동으로 업데이트되어 MCP 서버가 추가됩니다.*</em></p>
 </div>
 
+
 ## Claude Desktop에서 MCP 서버 확인 및 사용
 
 MCP 서버 설정을 마쳤다면, Claude Desktop 내에서 해당 서버가 제공하는 **도구(tools)**들을 사용할 준비가 된 것입니다. 
@@ -155,6 +159,7 @@ Claude Desktop에 여러 MCP 서버를 연결했다면 그 모든 도구들이 �
 
 사용자는 별도로 명령어 형식으로 도구를 실행할 필요 없이, **일반적인 질문을 던지면 Claude가 내부적으로 MCP 서버의 기능을 활용**하는 것이죠.
 
+
 ### 비트코인 변동성 분석 예시
 
 이제 실제 예시를 통해 확인해보겠습니다. Claude에게 **"비트코인의 최근 변동성을 분석해줘"**라고 요청해보겠습니다. 
@@ -175,6 +180,7 @@ Claude의 응답 내용을 보면, **비트코인 현재 가격과 최근 변동
 이 과정에서 사용자는 API 호출이나 데이터 파싱을 직접 할 필요 없이, **AI가 필요한 MCP 도구를 알아서 활용**해 준 결과만 확인하면 됩니다. 
 
 Claude Desktop + MCP 조합을 통해 마치 **전문 데이터 분석가에게 질문하듯 편하게 물어보고 답을 얻는 경험**을 할 수 있는 것이죠.
+
 
 ## 자주 쓰이는 MCP 서버 추천 TOP 5
 
@@ -217,6 +223,7 @@ Claude Desktop + MCP 조합을 통해 마치 **전문 데이터 분석가에게 
 상기의 MCP 서버들은 설치와 사용 방법이 대체로 유사합니다. Smithery에서 원하는 서버를 검색한 뒤, Claude Desktop 설정에 추가하면 즉시 해당 기능을 활용할 수 있습니다. 
 
 처음 몇 번은 설정 파일을 직접 편집해야 하므로 다소 번거로울 수 있지만, 일단 환경 구성이 완료되고 나면 AI 활용도가 비약적으로 높아지는 것을 체감할 수 있을 것입니다.
+
 
 ## 결론
 
