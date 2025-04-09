@@ -236,6 +236,4 @@ Claude Desktop + MCP 조합을 통해 마치 **전문 데이터 분석가에게 
 초급 개발자라도 본 문서를 참고하여 **AI에게 원하는 작업을 시키는 자신만의 MCP 툴셋**을 구성해 보길 권장합니다. 
 
 
-
-
 참고 자료: Model Context Protocol 공식 문서 [MCP 소개](https://modelcontextprotocol.io) [MCP 가이드](https://medium.com/data-and-beyond/the-model-context-protocol-mcp-the-ultimate-guide-c40539e2a8e7), Smithery.ai MCP 서버 레지스트리 [Desktop Commander](https://smithery.ai) [GitHub MCP](https://smithery.ai), Crypto Price MCP 서버 README [설정 방법](https://playbooks.com/mcp/truss44-crypto-price-coincap) [환경 변수](https://playbooks.com/mcp/truss44-crypto-price-coincap) 등.
