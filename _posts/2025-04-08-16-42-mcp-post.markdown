@@ -231,12 +231,11 @@ Claude Desktop + MCP 조합을 통해 마치 **전문 데이터 분석가에게 
 
 간단한 설정만으로도 Claude에 강력한 새로운 능력을 부여할 수 있다는 점이 인상적입니다. MCP는 AI 비서의 한계를 허물어뜨리는 **혁신적인 연결 규격**으로서, 앞으로 더 많은 활용 사례가 등장할 것으로 기대됩니다. 
 
+마지막으로, MCP 생태계는 아직 빠르게 발전하고 있는 중이므로 새로운 MCP 서버들이 속속 추가되고 있습니다.  
+
 초급 개발자라도 본 문서를 참고하여 **AI에게 원하는 작업을 시키는 자신만의 MCP 툴셋**을 구성해 보길 권장합니다. 
 
-마지막으로, MCP 생태계는 아직 빠르게 발전하고 있는 중이므로 새로운 MCP 서버들이 속속 추가되고 있습니다. 관심 있는 분야의 MCP 서버가 있는지 꾸준히 살펴보고 적용해 보세요. 
 
-예를 들어 업무 자동화를 위해 Jira나 Slack과 연동하는 MCP 서버, 디자인 작업을 돕는 Figma MCP 서버 [VWAP 기능](https://github.com/truss44/mcp-crypto-price) 등도 이미 공개되어 있습니다. 
 
-Claude와 MCP의 조합을 통해, 여러분의 AI 비서가 단순한 대화 상대를 넘어 **실제 문제 해결사**로 활약해주길 기대합니다!
 
 참고 자료: Model Context Protocol 공식 문서 [MCP 소개](https://modelcontextprotocol.io) [MCP 가이드](https://medium.com/data-and-beyond/the-model-context-protocol-mcp-the-ultimate-guide-c40539e2a8e7), Smithery.ai MCP 서버 레지스트리 [Desktop Commander](https://smithery.ai) [GitHub MCP](https://smithery.ai), Crypto Price MCP 서버 README [설정 방법](https://playbooks.com/mcp/truss44-crypto-price-coincap) [환경 변수](https://playbooks.com/mcp/truss44-crypto-price-coincap) 등.
