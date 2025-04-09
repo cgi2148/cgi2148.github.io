@@ -62,7 +62,7 @@ Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE,
 
 위 이미지의 예시에서 **Anthropic Claude**를 선택하면, 이 서버를 Claude Desktop에 연결하기 위한 설정 옵션들이 나타납니다. 
 
-또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 제공해야 함**을 의미합니다. [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)
+또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 입력해야 함**을 의미합니다. [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).
 
 ## Crypto Price & Market Analysis MCP 서버 설치 (API 키 입력, 명령어 방식 & JSON 방식)
 
