@@ -102,7 +102,7 @@ Smithery에서 제공하는 설치 구성은 사실상 이 설정 파일에 들�
 
 `"env"` 항목에는 CoinCap API 키를 환경변수로 설정하여 서버 실행 시 사용하도록 합니다 [환경변수 설정](https://playbooks.com/mcp/truss44-crypto-price-coincap). 
 
-위 JSON을 추가保存한 후 Claude Desktop 앱을 재실행하면, MCP 서버가 자동으로 실행되면서 Claude Desktop과 연결됩니다. 
+위 JSON을 추가하여 저장한 후 Claude Desktop 앱을 재실행하면, MCP 서버가 자동으로 실행되면서 Claude Desktop과 연결됩니다. 
 
 *(참고: API 키를 입력하지 않으면 자동으로 CoinCap V2 API를 사용하지만, 앞서 언급했듯이 V2 API는 종료 예정이므로 가급적 키를 사용하는 것이 좋습니다 [API 버전 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)*
 
