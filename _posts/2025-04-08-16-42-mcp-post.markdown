@@ -58,15 +58,29 @@ Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE,
   <p style="text-align: center;"><em>▲ Crypto Price & Market Analysis MCP 서버 상세 페이지</em></p>
 </div>
 
-해당 페이지에는 서버에 대한 소개와 함께, 사용할 클라이언트(예: Anthropic Claude)를 선택해 **설치 구성 정보를 확인**할 수 있는 인터페이스가 제공됩니다. 위 이미지의 예시에서 **Anthropic Claude**를 선택하면, 이 서버를 Claude Desktop에 연결하기 위한 설정 옵션들이 나타납니다. 또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 제공해야 함**을 의미합니다. (CoinCap은 무료로 시세 조회 API를 제공하지만, API 키를 사용하면 더 높은 쿼터로 최신 V3 API를 이용할 수 있습니다. API 키가 없을 경우 구버전인 V2 API로 동작하나 곧 종료될 예정이므로 가능하면 키를 발급받는 것이 좋습니다 [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)
+해당 페이지에는 서버에 대한 소개와 함께, 사용할 클라이언트(예: Anthropic Claude)를 선택해 **설치 구성 정보를 확인**할 수 있는 인터페이스가 제공됩니다. 
+
+위 이미지의 예시에서 **Anthropic Claude**를 선택하면, 이 서버를 Claude Desktop에 연결하기 위한 설정 옵션들이 나타납니다. 
+
+또한 이 MCP 서버가 **CoinCap**이라는 암호화폐 시세 API를 활용하고 있기 때문에, **`coincapApiKey`** 라는 API 키 입력란이 보입니다. 즉, **이 MCP 서버를 제대로 활용하려면 CoinCap API 키를 발급받아 제공해야 함**을 의미합니다. [Crypto Price MCP 서버 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)
 
 ## Crypto Price & Market Analysis MCP 서버 설치 (API 키 입력, 명령어 방식 & JSON 방식)
 
-이제 Smithery에서 확인한 정보를 바탕으로, Claude Desktop에 해당 MCP 서버를 추가해보겠습니다. Claude Desktop은 MCP 서버를 **설정 파일**에 등록하여 사용합니다. 예를 들어 Windows 환경에서는 `%APPDATA%/Claude/claude_desktop_config.json` (또는 MacOS의 `~/Library/Application Support/Claude/claude_desktop_config.json`) 파일에 MCP 서버 설정을 추가해야 합니다 [설정 파일 위치](https://playbooks.com/mcp/truss44-crypto-price-coincap). Smithery에서 제공하는 설치 구성은 사실상 이 설정 파일에 들어갈 내용입니다. 우리는 직접 설정 파일을 편집하는 **JSON 방식**과, 명령줄에서 설치하는 **명령어 방식** 두 가지를 모두 알아보겠습니다.
+이제 Smithery에서 확인한 정보를 바탕으로, Claude Desktop에 해당 MCP 서버를 추가해보겠습니다. 
 
-1. **CoinCap API 키 준비:** 우선 [CoinCap 웹사이트](https://coincap.io/)에서 무료 API 키를 발급받아 둡니다. 발급받은 키 문자열은 잠시 후 설정에 사용됩니다.
+Claude Desktop은 MCP 서버를 **설정 파일**에 등록하여 사용합니다. 예를 들어 Windows 환경에서는 `%APPDATA%/Claude/claude_desktop_config.json` (또는 MacOS의 `~/Library/Application Support/Claude/claude_desktop_config.json`) 파일에 MCP 서버 설정을 추가해야 합니다 [설정 파일 위치](https://playbooks.com/mcp/truss44-crypto-price-coincap). 
 
-2. **설정 파일에 MCP 서버 추가 (JSON 방식):** Claude Desktop의 설정 JSON 파일을 열어, **`"mcpServers"`** 항목에 다음 내용을 추가합니다 (이미 `mcpServers` 객체가 있다면 그 안에 추가). 아래 예시는 **API 키가 없는 기본 설정**이며, `"YOUR_API_KEY_HERE"` 부분에 실제 키 값을 넣어 키를 사용할 수도 있습니다.
+Smithery에서 제공하는 설치 구성은 사실상 이 설정 파일에 들어갈 내용입니다. 우리는 직접 설정 파일을 편집하는 **JSON 방식**과, 명령줄에서 설치하는 **명령어 방식** 두 가지를 모두 알아보겠습니다.
+
+1. **CoinCap API 키 준비:** 
+   
+   우선 [CoinCap 웹사이트](https://coincap.io/)에서 무료 API 키를 발급받아 둡니다. 발급받은 키 문자열은 잠시 후 설정에 사용됩니다.
+
+2. **설정 파일에 MCP 서버 추가 (JSON 방식):** 
+   
+   Claude Desktop의 설정 JSON 파일을 열어, **`"mcpServers"`** 항목에 다음 내용을 추가합니다 (이미 `mcpServers` 객체가 있다면 그 안에 추가). 
+   
+   아래 예시는 **API 키가 없는 기본 설정**이며, `"YOUR_API_KEY_HERE"` 부분에 실제 키 값을 넣어 키를 사용할 수도 있습니다.
 
 ```json
 {
@@ -82,17 +96,33 @@ Claude Desktop을 비롯한 여러 MCP 지원 클라이언트(Cline, Cursor IDE,
 }
 ``` 
 
-위 설정에서 `"command": "npx"`와 `"args": ["-y", "mcp-crypto-price"]`는 **npm 패키지로 배포된 `mcp-crypto-price` 서버를 npx를 통해 설치 및 실행**하도록 지정하는 것입니다 [설정 예시](https://playbooks.com/mcp/truss44-crypto-price-coincap). 즉, Claude Desktop이 해당 MCP 서버에 접속할 때 자동으로 `mcp-crypto-price` NPM 패키지를 내려받아 실행합니다. `"env"` 항목에는 CoinCap API 키를 환경변수로 설정하여 서버 실행 시 사용하도록 합니다 [환경변수 설정](https://playbooks.com/mcp/truss44-crypto-price-coincap). 위 JSON을 추가保存한 후 Claude Desktop 앱을 재실행하면, MCP 서버가 자동으로 실행되면서 Claude Desktop과 연결됩니다. *(참고: API 키를 입력하지 않으면 자동으로 CoinCap V2 API를 사용하지만, 앞서 언급했듯이 V2 API는 종료 예정이므로 가급적 키를 사용하는 것이 좋습니다 [API 버전 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)*
+위 설정에서 `"command": "npx"`와 `"args": ["-y", "mcp-crypto-price"]`는 **npm 패키지로 배포된 `mcp-crypto-price` 서버를 npx를 통해 설치 및 실행**하도록 지정하는 것입니다 [설정 예시](https://playbooks.com/mcp/truss44-crypto-price-coincap). 
 
-3. **명령어를 통한 설치 (명령어 방식):** 위 과정을 터미널 명령으로도 할 수 있습니다. 예를 들어 전역 설치를 선호한다면 다음 명령어로 NPM 패키지를 글로벌 설치할 수 있습니다:
+즉, Claude Desktop이 해당 MCP 서버에 접속할 때 자동으로 `mcp-crypto-price` NPM 패키지를 내려받아 실행합니다. 
+
+`"env"` 항목에는 CoinCap API 키를 환경변수로 설정하여 서버 실행 시 사용하도록 합니다 [환경변수 설정](https://playbooks.com/mcp/truss44-crypto-price-coincap). 
+
+위 JSON을 추가保存한 후 Claude Desktop 앱을 재실행하면, MCP 서버가 자동으로 실행되면서 Claude Desktop과 연결됩니다. 
+
+*(참고: API 키를 입력하지 않으면 자동으로 CoinCap V2 API를 사용하지만, 앞서 언급했듯이 V2 API는 종료 예정이므로 가급적 키를 사용하는 것이 좋습니다 [API 버전 정보](https://playbooks.com/mcp/truss44-crypto-price-coincap).)*
+
+3. **명령어를 통한 설치 (명령어 방식):** 
+   
+   위 과정을 터미널 명령으로도 할 수 있습니다. 예를 들어 전역 설치를 선호한다면 다음 명령어로 NPM 패키지를 글로벌 설치할 수 있습니다:
 
 ```bash
 npm install -g mcp-crypto-price
 ```
 
-그리고 Claude Desktop 설정 파일에서는 `"command": "mcp-crypto-price"`로 설정하여 전역 명령을 호출하도록 할 수도 있습니다. 다만, npx를 사용하면 전역 설치 없이도 자동으로 패키지를 실행해주므로 편리합니다. Smithery 사이트에서도 Claude Desktop 설정에 넣을 JSON 스니펫을 바로 제공하며, **"Connect"** 버튼을 통해 해당 MCP 서버를 손쉽게 연결할 수 있는 기능을 지원합니다 (Smithery에 Claude Desktop을 연동해 두었다면 UI에서 버튼 클릭만으로 설정이 완료됩니다).
+그리고 Claude Desktop 설정 파일에서는 `"command": "mcp-crypto-price"`로 설정하여 전역 명령을 호출하도록 할 수도 있습니다. 
 
-위의 두 가지 방식 중 편한 방법을 선택하여 Crypto Price MCP 서버를 Claude Desktop에 등록하세요. 설정을 마치고 Claude Desktop을 다시 실행하면, 새로운 MCP 서버가 정상적으로 동작하는지 확인할 수 있습니다.
+다만, npx를 사용하면 전역 설치 없이도 자동으로 패키지를 실행해주므로 편리합니다. 
+
+Smithery 사이트에서도 Claude Desktop 설정에 넣을 JSON 스니펫을 바로 제공하며, **"Connect"** 버튼을 통해 해당 MCP 서버를 손쉽게 연결할 수 있는 기능을 지원합니다 (Smithery에 Claude Desktop을 연동해 두었다면 UI에서 버튼 클릭만으로 설정이 완료됩니다).
+
+위의 두 가지 방식 중 편한 방법을 선택하여 Crypto Price MCP 서버를 Claude Desktop에 등록하세요. 
+
+설정을 마치고 Claude Desktop을 다시 실행하면, 새로운 MCP 서버가 정상적으로 동작하는지 확인할 수 있습니다.
 
 <div style="text-align: center;">
   <img src="/assets/images/mustree/대장간2.JPG" alt="Smithery 설정 예시 – CoinCap API 키를 입력하고 Claude Desktop과 연결하는 화면">
