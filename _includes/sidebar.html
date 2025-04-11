@@ -93,24 +93,20 @@
 							</a>
 						</li>
 					{% endif %}
-					{% if data_science_posts.size > 0 %}
-						<li class="subcategory">
-							<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#data-science" data-category="data-science">
-								<span class="arrow">└</span>
-								<span class="name">Data Science</span>
-								<span class="badge">{{ data_science_posts.size }}</span>
-							</a>
-						</li>
-					{% endif %}
-					{% if project_posts.size > 0 %}
-						<li class="subcategory">
-							<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#project" data-category="project">
-								<span class="arrow">└</span>
-								<span class="name">Project</span>
-								<span class="badge">{{ project_posts.size }}</span>
-							</a>
-						</li>
-					{% endif %}
+					<li class="subcategory">
+						<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#data-science" data-category="data-science">
+							<span class="arrow">└</span>
+							<span class="name">Data Science</span>
+							<span class="badge">{{ data_science_posts.size }}</span>
+						</a>
+					</li>
+					<li class="subcategory">
+						<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#project" data-category="project">
+							<span class="arrow">└</span>
+							<span class="name">Project</span>
+							<span class="badge">{{ project_posts.size }}</span>
+						</a>
+					</li>
 				</li>
 			{% elsif cat_name == "mustree" %}
 				{% assign mustree_posts = "" | split: "" %}
