@@ -46,7 +46,21 @@
 					{% endif %}
 				{% endfor %}
 				
-				{% assign total_konkuk_posts = rag_posts.size | plus: rag_code_posts.size | plus: mcp_posts.size %}
+				{% assign data_science_posts = "" | split: "" %}
+				{% for post in site.posts %}
+					{% if post.categories contains "data-science" %}
+						{% assign data_science_posts = data_science_posts | push: post %}
+					{% endif %}
+				{% endfor %}
+				
+				{% assign project_posts = "" | split: "" %}
+				{% for post in site.posts %}
+					{% if post.categories contains "project" %}
+						{% assign project_posts = project_posts | push: post %}
+					{% endif %}
+				{% endfor %}
+				
+				{% assign total_konkuk_posts = rag_posts.size | plus: rag_code_posts.size | plus: mcp_posts.size | plus: data_science_posts.size | plus: project_posts.size %}
 				<li>
 					<a class="nav-item parent-category" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
 						<span class="name">Konkuk</span>
@@ -76,6 +90,24 @@
 								<span class="arrow">└</span>
 								<span class="name">MCP</span>
 								<span class="badge">{{ mcp_posts.size }}</span>
+							</a>
+						</li>
+					{% endif %}
+					{% if data_science_posts.size > 0 %}
+						<li class="subcategory">
+							<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#data-science" data-category="data-science">
+								<span class="arrow">└</span>
+								<span class="name">Data Science</span>
+								<span class="badge">{{ data_science_posts.size }}</span>
+							</a>
+						</li>
+					{% endif %}
+					{% if project_posts.size > 0 %}
+						<li class="subcategory">
+							<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#project" data-category="project">
+								<span class="arrow">└</span>
+								<span class="name">Project</span>
+								<span class="badge">{{ project_posts.size }}</span>
 							</a>
 						</li>
 					{% endif %}
