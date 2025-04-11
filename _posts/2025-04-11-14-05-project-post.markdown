@@ -2,7 +2,7 @@
 layout: post
 title:  "금융 시장 확률 계산 솔루션 개발 로드맵"
 date:   2025-04-11 14:05:00 +0900
-categories: (konkuk, project)
+categories: [konkuk, project]
 --- 
 # 프로젝트 로드맵
 
