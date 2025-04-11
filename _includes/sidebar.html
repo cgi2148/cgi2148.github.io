@@ -121,7 +121,7 @@
 						<span class="badge">{{ mustree_posts.size }}</span>
 					</a>
 				</li>
-			{% elsif cat_name != "rag" and cat_name != "rag-code" and cat_name != "mcp" %}
+			{% elsif cat_name != "rag" and cat_name != "rag-code" and cat_name != "mcp" and cat_name != "data-science" and cat_name != "project" %}
 				<li>
 					<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
 						<span class="name">{{ cat_name }}</span>
@@ -153,7 +153,7 @@ function updateActiveCategory() {
 			activeItem.classList.add('active');
 			
 			// 만약 하위 카테고리가 선택되었다면 상위 카테고리(konkuk)도 활성화
-			if (hash === 'rag' || hash === 'rag-code' || hash === 'mcp') {
+			if (hash === 'rag' || hash === 'rag-code' || hash === 'mcp' || hash === 'data-science' || hash === 'project') {
 				var parentItem = document.querySelector('.nav-item[data-category="konkuk"]');
 				if (parentItem) {
 					parentItem.classList.add('active');
