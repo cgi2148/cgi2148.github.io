@@ -143,7 +143,23 @@ chain = prompt | model
 - `model_name` 역시 변경하여 테스트가 가능합니다.
 
 ```python
-chain
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+from langchain.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+
+prompt = ChatPromptTemplate.from_template("당신은 친절한 도움말 챗봇입니다. 질문: {question}")
+model = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+output_parser = StrOutputParser()
+
+chain = (
+    {"question": RunnablePassthrough()}
+    | prompt
+    | model
+    | output_parser
+)
+
+chain.invoke("LangChain Expression Language란 무엇인가요?")
 ```
 
 ---
