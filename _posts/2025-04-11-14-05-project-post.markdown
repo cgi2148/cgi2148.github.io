@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "MCP 기반 금융 확률 분석 시스템"
+title:  "MCP 기반 금융 확률 분석 시스템 개요"
 date:   2025-04-11 14:05:00 +0900
 categories: [konkuk, project]
 --- 
