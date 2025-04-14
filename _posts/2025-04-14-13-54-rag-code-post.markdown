@@ -6,7 +6,7 @@ categories: [konkuk, rag-code]
 --- 
 # LangChain Hub
 
-이 문서는 `03-LangChain-Hub.ipynb`의 내용을 바탕으로, LangChain Hub의 사용법을 정리한 실습 중심 가이드입니다.
+이 문서는 `03-LangChain-Hub.ipynb`의 내용을 바탕으로, [LangChain Hub](https://smith.langchain.com/hub)의 사용법을 정리한 실습 중심 가이드입니다.
 
 > 📌 **LangChain Hub**는 사전 정의된 프롬프트나 체인 구성요소를 쉽게 재사용하거나 공유할 수 있도록 도와주는 오픈소스 저장소입니다.
 
