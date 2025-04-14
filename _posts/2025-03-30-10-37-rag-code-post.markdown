@@ -1,0 +1,149 @@
+---
+layout: post
+title:  "RAG 기반 PDF 질문 응답 시스템 실습 과제"
+date:   2025-03-30 10:37:00 +0900
+categories: [konkuk, rag-code]
+--- 
+# 🧠 RAG 기반 PDF 질문 응답 시스템 실습 과제
+
+> LangChain, OpenAI, FAISS를 활용한 PDF 문서 기반 질의응답 시스템 실습 예제입니다.
+
+---
+
+## 📌 프로젝트 개요
+
+이 프로젝트는 PDF 문서를 기반으로 **RAG (Retrieval-Augmented Generation)** 방식을 이용하여 GPT 모델이 문서 내용을 이해하고, 질문에 응답할 수 있는 시스템을 구성한 것입니다.
+
+---
+
+## 🔧 사용 기술 스택
+
+- **LangChain**: LLM을 조합하고 체인화하는 프레임워크
+- **PDFPlumber**: PDF 문서에서 텍스트 추출
+- **FAISS**: 벡터 검색을 위한 고속 검색 엔진
+- **OpenAI API**: GPT-4o 및 Embedding 모델 호출
+- **LangChain Hub**: 프롬프트 템플릿 저장소
+
+---
+
+## 🗂️ 프로젝트 구성
+
+### 1. 모듈 임포트 및 설정
+
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PDFPlumberLoader
+from langchain_community.vectorstores import FAISS
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain import hub
+```
+
+---
+
+### 2. PDF 문서 불러오기
+
+```python
+loader = PDFPlumberLoader("data/SPRI_AI_Brief_2023년12월호_F.pdf")
+docs = loader.load()
+```
+
+- 📄 PDF 파일을 불러와 텍스트 데이터를 추출합니다.
+
+---
+
+### 3. 문서 분할
+
+```python
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50)
+split_documents = text_splitter.split_documents(docs)
+```
+
+- 긴 문서를 300자 단위로 자르고 50자 정도 겹치게 분할하여 문맥 손실을 줄입니다.
+
+---
+
+### 4. 문서 임베딩 및 벡터 저장소 생성
+
+```python
+embeddings = OpenAIEmbeddings()
+vectorstore = FAISS.from_documents(documents=split_documents, embedding=embeddings)
+```
+
+- 각 문서 조각을 벡터로 변환하여 FAISS 데이터베이스에 저장합니다.
+
+---
+
+### 5. 검색기(Retriever) 생성
+
+```python
+retriever = vectorstore.as_retriever()
+```
+
+- 질문과 가장 유사한 문서를 빠르게 찾기 위한 검색기를 생성합니다.
+
+---
+
+### 6. 프롬프트 템플릿 로딩
+
+```python
+prompt = hub.pull("teddynote/rag-korean")
+```
+
+- LangChain Hub에서 한글에 최적화된 RAG 프롬프트를 불러옵니다.
+
+---
+
+### 7. GPT 모델 설정
+
+```python
+llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
+```
+
+- GPT-4o 모델을 사용하여 정밀하고 일관된 응답을 생성합니다.
+
+---
+
+### 8. 체인 구성 및 연결
+
+```python
+chain = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+```
+
+- 사용자 질문을 받아 문서를 검색하고, 프롬프트에 반영해 GPT가 응답을 생성하는 전체 흐름을 구성합니다.
+
+---
+
+### 9. 체인 실행 예시
+
+```python
+chain.invoke("삼성전자가 개발한 생성형 AI 이름은?")
+```
+
+- 실행 결과:
+```
+"삼성전자가 개발한 생성형 AI의 이름은 '삼성 가우스'입니다."
+```
+
+---
+
+## ✅ 요약
+
+| 단계 | 설명 |
+|------|------|
+| 1 | PDF 문서를 로딩 |
+| 2 | 문서를 청크로 분할 |
+| 3 | 임베딩 벡터로 변환 |
+| 4 | 벡터스토어(FAISS) 구축 |
+| 5 | 검색기 생성 |
+| 6 | 프롬프트 불러오기 |
+| 7 | GPT 모델 설정 |
+| 8 | 체인 구성 및 실행 |
+
+---
