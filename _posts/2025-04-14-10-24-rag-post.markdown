@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  ""
+title:  "출력파서(Output Parser)"
 date:   2025-04-14 10:24:00 +0900
-categories: [konkuk rag]
+categories: [konkuk, rag]
 --- 
 # 🔄 출력파서(Output Parser)
 
