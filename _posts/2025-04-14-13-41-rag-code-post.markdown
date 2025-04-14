@@ -4,10 +4,6 @@ title:  "Runnable"
 date:   2025-04-14 13:41:00 +0900
 categories: [konkuk, rag-code]
 --- 
----
-title: LCEL Runnable
-layout: default
----
 
 # LCEL의 핵심 구성 요소: Runnable 완전 정복
 
