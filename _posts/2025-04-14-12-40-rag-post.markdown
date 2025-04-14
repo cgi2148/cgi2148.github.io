@@ -1,0 +1,166 @@
+---
+layout: post
+title:  "LCEL"
+date:   2025-04-14 12:40:00 +0900
+categories: [konkuk, rag-code]
+--- 
+# 📘 LCEL 
+
+본 문서는 `03-LCEL.ipynb` Jupyter Notebook의 내용을 기반으로 **LangChain Expression Language (LCEL)**의 주요 개념과 예제 코드를 설명하고, Github Pages를 통해 복습할 수 있도록 정리한 것입니다.
+
+## 🧩 섹션 1: 설명 및 코드 예제
+
+## 기본 예시: 프롬프트 + 모델 + 출력 파서
+
+가장 기본적이고 일반적인 사용 사례는 prompt 템플릿과 모델을 함께 연결하는 것입니다. 이것이 어떻게 작동하는지 보기 위해, 각 나라별 수도를 물어보는 Chain을 생성해 보겠습니다.
+
+
+```python
+# API KEY를 환경변수로 관리하기 위한 설정 파일
+from dotenv import load_dotenv
+
+# API KEY 정보로드
+load_dotenv()
+```
+
+## 🧩 섹션 2: 설명 및 코드 예제
+
+## 프롬프트 템플릿의 활용
+
+`PromptTemplate`
+
+- 사용자의 입력 변수를 사용하여 완전한 프롬프트 문자열을 만드는 데 사용되는 템플릿입니다
+- 사용법
+  - `template`: 템플릿 문자열입니다. 이 문자열 내에서 중괄호 `{}`는 변수를 나타냅니다.
+  - `input_variables`: 중괄호 안에 들어갈 변수의 이름을 리스트로 정의합니다.
+
+`input_variables`
+
+- input_variables는 PromptTemplate에서 사용되는 변수의 이름을 정의하는 리스트입니다.
+
+```python
+# LangSmith 추적을 설정합니다. https://smith.langchain.com
+# !pip install -qU langchain-teddynote
+from langchain_teddynote import logging
+
+# 프로젝트 이름을 입력합니다.
+logging.langsmith("CH01-Basic")
+```
+
+## 🧩 섹션 3: 설명 및 코드 예제
+
+`from_template()` 메소드를 사용하여 PromptTemplate 객체 생성
+
+
+```python
+from langchain_teddynote.messages import stream_response  # 스트리밍 출력
+from langchain_core.prompts import PromptTemplate
+```
+
+## 🧩 섹션 4: 설명 및 코드 예제
+
+## Chain 생성
+
+### LCEL(LangChain Expression Language)
+
+![lcel.png](./images/lcel.png)
+
+여기서 우리는 LCEL을 사용하여 다양한 구성 요소를 단일 체인으로 결합합니다
+
+```
+chain = prompt | model | output_parser
+```
+
+`|` 기호는 [unix 파이프 연산자](<https://en.wikipedia.org/wiki/Pipeline_(Unix)>)와 유사하며, 서로 다른 구성 요소를 연결하고 한 구성 요소의 출력을 다음 구성 요소의 입력으로 전달합니다.
+
+이 체인에서 사용자 입력은 프롬프트 템플릿으로 전달되고, 그런 다음 프롬프트 템플릿 출력은 모델로 전달됩니다. 각 구성 요소를 개별적으로 살펴보면 무슨 일이 일어나고 있는지 이해할 수 있습니다.
+
+
+```python
+# template 정의
+template = "{country}의 수도는 어디인가요?"
+
+# from_template 메소드를 이용하여 PromptTemplate 객체 생성
+prompt_template = PromptTemplate.from_template(template)
+prompt_template
+```
+
+## 🧩 섹션 5: 설명 및 코드 예제
+
+### invoke() 호출
+
+- python 딕셔너리 형태로 입력값을 전달합니다.(키: 값)
+- invoke() 함수 호출 시, 입력값을 전달합니다.
+
+```python
+# prompt 생성
+prompt = prompt_template.format(country="대한민국")
+prompt
+```
+
+## 🧩 섹션 6: 설명 및 코드 예제
+
+아래는 스트리밍을 출력하는 예시 입니다.
+
+```python
+# prompt 생성
+prompt = prompt_template.format(country="미국")
+prompt
+```
+
+## 🧩 섹션 7: 설명 및 코드 예제
+
+### 출력파서(Output Parser)
+
+
+```python
+from langchain_openai import ChatOpenAI
+
+model = ChatOpenAI(
+    model="gpt-4o-mini",
+    temperature=0.1,
+)
+```
+
+## 🧩 섹션 8: 설명 및 코드 예제
+
+Chain 에 출력파서를 추가합니다.
+
+```python
+# prompt 를 PromptTemplate 객체로 생성합니다.
+prompt = PromptTemplate.from_template("{topic} 에 대해 쉽게 설명해주세요.")
+
+model = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+
+chain = prompt | model
+```
+
+## 🧩 섹션 9: 설명 및 코드 예제
+
+### 템플릿을 변경하여 적용
+
+- 아래의 프롬프트 내용을 얼마든지 **변경** 하여 테스트 해볼 수 있습니다.
+- `model_name` 역시 변경하여 테스트가 가능합니다.
+
+```python
+chain
+```
+
+---
+📌 이 문서는 LCEL의 개념 학습과 실습을 병행할 수 있도록 구성되었으며, 각 코드 블록은 직접 실행해보며 복습하기에 적합합니다.
+---
+
+## 🧠 핵심 요약: LCEL (LangChain Expression Language)
+
+- **LCEL 정의**: LangChain Expression Language는 체이닝 로직을 직관적이고 선언적으로 구성할 수 있게 해주는 표현식 기반 도구입니다.
+- **Runnable 개념**: 모든 체인 컴포넌트는 `Runnable`로 추상화되어 있으며, `.invoke()`, `.batch()`, `.stream()` 등의 메서드로 실행됩니다.
+- **체인 구성 요소**:
+  - `RunnableLambda`, `RunnablePassthrough`: 간단한 입력/출력 변형에 사용.
+  - `RunnableSequence`, `RunnableParallel`: 체인의 직렬 또는 병렬 구성을 도와줌.
+- **유틸리티 연산자**:
+  - `assign`: 입력 데이터에 키-값을 할당하여 다음 체인에 전달.
+  - `map`, `pipe`, `with_fallbacks` 등의 고차 함수 체이닝도 가능.
+- **활용 예시**: 자연어 입력 → 파싱 → 조건 판단 → 출력 생성 등의 일련의 작업을 체인화하여 자동화할 수 있음.
+- **실행 흐름 제어**: 조건 분기나 예외 처리도 표현식 수준에서 가능하여 복잡한 플로우를 단순하게 표현 가능.
+
+이 요약은 전체 문서의 복습 포인트로, **LangChain을 처음 배우는 학습자**가 LCEL의 구조와 실행 방식을 빠르게 파악하는 데 도움을 줍니다.
