@@ -63,7 +63,9 @@ from langchain_core.prompts import PromptTemplate
 
 ### LCEL(LangChain Expression Language)
 
-![lcel.png](assets/images/mustree/lcel.png)
+<div style="text-align: center;">
+  <img src="/assets/images/mustree/lcel.png">
+</div>
 
 여기서 우리는 LCEL을 사용하여 다양한 구성 요소를 단일 체인으로 결합합니다
 
@@ -163,7 +165,7 @@ chain.invoke("LangChain Expression Language란 무엇인가요?")
 ```
 
 ---
-📌 이 문서는 LCEL의 개념 학습과 실습을 병행할 수 있도록 구성되었으며, 각 코드 블록은 직접 실행해보며 복습하기에 적합합니다.
+📌 이 문서는 LCEL의 개념 학습과 실습을 병행할 수 있도록 구성되었으며, 각 코드 블록은 직접 실행해보며 복습하기에 적합합니다.  
 ---
 
 ## 🧠 핵심 요약: LCEL (LangChain Expression Language)
