@@ -1,6 +1,247 @@
 ---
 layout: post
-title:  ""
+title:  "Personal-Prompts"
 date:   2025-04-14 13:55:00 +0900
 categories: [konkuk, rag-code]
 --- 
+
+# LangChain으로 만드는 개인화된 프롬프트
+
+이 문서는 `04-Personal-Prompts.ipynb`의 내용을 바탕으로, **LangChain을 활용해 개인화된 프롬프트를 설계하는 방법**을 초보자도 쉽게 이해할 수 있도록 정리한 실습형 가이드입니다.
+
+> 📌 사용자의 성향이나 데이터를 바탕으로 개인 맞춤형 AI 응답을 생성하는 프롬프트 설계 방식입니다.
+
+---
+
+## 목차
+{:toc}
+
+---
+
+## 섹션 1
+
+> 📘 **설명**
+
+LangChain 아이디를 입력합니다.
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+---
+
+## 섹션 2
+
+> 📘 **설명**
+
+## 요약: Stuff Documents
+
+```python
+# Owner 지정
+PROMPT_OWNER = "teddynote"
+```
+
+---
+
+## 섹션 3
+
+> 📘 **설명**
+
+## Map Prompt
+
+```python
+from langchain import hub
+from langchain.prompts import PromptTemplate
+
+prompt_title = "summary-stuff-documents"
+
+# 요약문을 작성하기 위한 프롬프트 정의 (직접 프롬프트를 작성하는 경우)
+prompt_template = """Please summarize the sentence according to the following REQUEST.
+REQUEST:
+1. Summarize the main points in bullet points.
+2. Each summarized sentence must start with an emoji that fits the meaning of the each sentence.
+3. Use various emojis to make the summary more interesting.
+4. DO NOT include any unnecessary information.
+
+CONTEXT:
+{context}
+
+SUMMARY:"
+"""
+prompt = PromptTemplate.from_template(prompt_template)
+prompt
+```
+
+---
+
+## 섹션 4
+
+> 📘 **설명**
+
+## Reduce Prompt
+
+```python
+hub.push(f"{PROMPT_OWNER}/{prompt_title}", prompt)
+```
+
+---
+
+## 섹션 5
+
+> 📘 **설명**
+
+## Metadata Tagger
+
+```python
+from langchain import hub
+from langchain.prompts import PromptTemplate
+
+prompt_title = "map-prompt"
+
+# 요약문을 작성하기 위한 프롬프트 정의 (직접 프롬프트를 작성하는 경우)
+prompt_template = """You are a helpful expert journalist in extracting the main themes from a GIVEN DOCUMENTS below.
+Please provide a comprehensive summary of the GIVEN DOCUMENTS in numbered list format. 
+The summary should cover all the key points and main ideas presented in the original text, while also condensing the information into a concise and easy-to-understand format. 
+Please ensure that the summary includes relevant details and examples that support the main ideas, while avoiding any unnecessary information or repetition. 
+The length of the summary should be appropriate for the length and complexity of the original text, providing a clear and accurate overview without omitting any important information.
+
+GIVEN DOCUMENTS:
+{docs}
+
+FORMAT:
+1. main theme 1
+2. main theme 2
+3. main theme 3
+...
+
+CAUTION:
+- DO NOT list more than 5 main themes.
+
+Helpful Answer:
+"""
+prompt = PromptTemplate.from_template(prompt_template)
+prompt
+```
+
+---
+
+## 섹션 6
+
+> 📘 **설명**
+
+## Chain of Density 요약
+
+```python
+hub.push(f"{PROMPT_OWNER}/{prompt_title}", prompt)
+```
+
+---
+
+## 섹션 7
+
+> 📘 **설명**
+
+## Chain of Density (Korean) - 2
+
+```python
+from langchain import hub
+from langchain.prompts import PromptTemplate
+
+prompt_title = "reduce-prompt"
+
+# 요약문을 작성하기 위한 프롬프트 정의 (직접 프롬프트를 작성하는 경우)
+prompt_template = """You are a helpful expert in summary writing.
+You are given numbered lists of summaries.
+Extract top 10 most important insights from the summaries.
+Then, write a summary of the insights in KOREAN.
+
+LIST OF SUMMARIES:
+{doc_summaries}
+
+Helpful Answer:
+"""
+prompt = PromptTemplate.from_template(prompt_template)
+prompt
+```
+
+---
+
+## 섹션 8
+
+> 📘 **설명**
+
+## RAG 문서 프롬프트
+
+```python
+hub.push(f"{PROMPT_OWNER}/{prompt_title}", prompt)
+```
+
+---
+
+## 섹션 9
+
+> 📘 **설명**
+
+## RAG + 출처
+
+```python
+from langchain import hub
+from langchain.prompts import PromptTemplate
+
+prompt_title = "chain-of-density-reduce-korean"
+
+# 요약문을 작성하기 위한 프롬프트 정의 (직접 프롬프트를 작성하는 경우)
+prompt_template = """You are a helpful expert in summary writing. You are given lists of summaries.
+Please sum up previously summarized sentences according to the following REQUEST.
+REQUEST:
+1. Summarize the main points in bullet points in KOREAN.
+2. Each summarized sentence must start with an emoji that fits the meaning of the each sentence.
+3. Use various emojis to make the summary more interesting.
+4. MOST IMPORTANT points should be organized at the top of the list.
+5. DO NOT include any unnecessary information.
+
+LIST OF SUMMARIES:
+{doc_summaries}
+
+Helpful Answer: """
+prompt = PromptTemplate.from_template(prompt_template)
+prompt
+```
+
+---
+
+## 섹션 10
+
+> 📘 **설명**
+
+## LLM Evaluation
+
+```python
+hub.push(f"{PROMPT_OWNER}/{prompt_title}", prompt)
+```
+
+---
+
+## 핵심 요약: 개인화된 프롬프트 설계란?
+
+> 💡 사용자 정보나 맥락을 활용해 맞춤형 응답을 생성하는 프롬프트 방식입니다.
+
+- **사용자 정의 변수**를 템플릿에 포함시켜, 입력마다 다른 결과를 유도할 수 있습니다.
+- `PromptTemplate`과 사용자 정보(JSON, dict 등)를 결합하여 프롬프트를 구성합니다.
+- `ChatPromptTemplate`과 함께 사용하면 멀티 턴 대화에도 대응할 수 있습니다.
+
+### 예시 코드
+```python
+from langchain.prompts import ChatPromptTemplate
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "당신은 맞춤형 조언을 해주는 전문가입니다."),
+    ("human", "{user_name}님은 어떤 고민이 있으신가요?")
+])
+
+template.format(user_name="광일")
+```
+
+> ✅ 개인화된 프롬프트는 챗봇, 추천 시스템, 맞춤형 상담 등에 유용하게 적용됩니다.

@@ -1,6 +1,288 @@
 ---
 layout: post
-title:  ""
+title:  "PydanticOuputParser"
 date:   2025-04-14 13:57:00 +0900
 categories: [konkuk, rag-code]
 --- 
+# PydanticOutputParser 실습 가이드
+
+이 문서는 `01-PydanticOuputParser.ipynb`의 내용을 기반으로, LangChain에서 **출력 형식을 구조화하기 위해 사용하는 `PydanticOutputParser`**를 초보자도 쉽게 이해할 수 있도록 정리한 문서입니다.
+
+> 📌 출력 데이터를 JSON과 같은 구조화된 형태로 파싱하고 싶은 경우 `PydanticOutputParser`를 활용합니다.
+
+---
+
+## 목차
+{:toc}
+
+---
+
+## 섹션 1
+
+> 📘 **설명**
+
+# PydanticOutputParser
+
+`PydanticOutputParser`는 언어 모델의 출력을 **구조화된 정보**로 변환하는 데 도움을 주는 클래스입니다. 이 클래스는 단순 텍스트 응답 대신 **명확하고 체계적인 형태로 필요한 정보를 제공**할 수 있습니다.
+
+이 클래스를 활용하면 언어 모델의 출력을 특정 데이터 모델에 맞게 변환하여 정보를 더 쉽게 처리하고 활용할 수 있습니다.
+
+## 주요 메서드
+
+`PydanticOutputParser` (대부분의 OutputParser에 해당)에는 주로 **두 가지 핵심 메서드**가 구현되어야 합니다.
+
+- **`get_format_instructions()`**: 언어 모델이 출력해야 할 정보의 형식을 정의하는 지침을 제공합니다. 예를 들어, 언어 모델이 출력해야 할 데이터의 필드와 그 형태를 설명하는 지침을 문자열로 반환할 수 있습니다. 이 지침은 언어 모델이 출력을 구조화하고 특정 데이터 모델에 맞게 변환하는 데 매우 중요합니다.
+- **`parse()`**: 언어 모델의 출력(문자열로 가정)을 받아 이를 특정 구조로 분석하고 변환합니다. Pydantic과 같은 도구를 사용하여 입력된 문자열을 사전 정의된 스키마에 따라 검증하고, 해당 스키마를 따르는 데이터 구조로 변환합니다.
+
+## 참고 자료
+
+- [Pydantic 공식 도큐먼트](https://docs.pydantic.dev/latest/)
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+---
+
+## 섹션 2
+
+> 📘 **설명**
+
+다음은 이메일 본문 예시입니다.
+
+```python
+# LangSmith 추적을 설정합니다. https://smith.langchain.com
+# !pip install langchain-teddynote
+from langchain_teddynote import logging
+
+# 프로젝트 이름을 입력합니다.
+logging.langsmith("CH03-OutputParser")
+```
+
+---
+
+## 섹션 3
+
+> 📘 **설명**
+
+출력 파서를 사용하지 않는 경우 예시
+
+```python
+# 실시간 출력을 위한 import
+from langchain_teddynote.messages import stream_response
+```
+
+---
+
+## 섹션 4
+
+> 📘 **설명**
+
+위와 같은 이메일 내용이 주어졌을 때 아래의 Pydantic 스타일로 정의된 클래스를 사용하여 이메일의 정보를 파싱해 보겠습니다.
+
+참고로, Field 안에 `description` 은 텍스트 형태의 답변에서 주요 정보를 추출하기 위한 설명입니다. LLM 이 바로 이 설명을 보고 필요한 정보를 추출하게 됩니다. 그러므로 이 설명은 정확하고 명확해야 합니다.
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import PydanticOutputParser
+from pydantic import BaseModel, Field
+
+
+llm = ChatOpenAI(temperature=0, model_name="gpt-4o")
+```
+
+---
+
+## 섹션 5
+
+> 📘 **설명**
+
+프롬프트를 정의합니다.
+
+1. `question`: 유저의 질문을 받습니다.
+2. `email_conversation`: 이메일 본문의 내용을 입력합니다.
+3. `format`: 형식을 지정합니다.
+
+```python
+email_conversation = """From: 김철수 (chulsoo.kim@bikecorporation.me)
+To: 이은채 (eunchae@teddyinternational.me)
+Subject: "ZENESIS" 자전거 유통 협력 및 미팅 일정 제안
+
+안녕하세요, 이은채 대리님,
+
+저는 바이크코퍼레이션의 김철수 상무입니다. 최근 보도자료를 통해 귀사의 신규 자전거 "ZENESIS"에 대해 알게 되었습니다. 바이크코퍼레이션은 자전거 제조 및 유통 분야에서 혁신과 품질을 선도하는 기업으로, 이 분야에서의 장기적인 경험과 전문성을 가지고 있습니다.
+
+ZENESIS 모델에 대한 상세한 브로슈어를 요청드립니다. 특히 기술 사양, 배터리 성능, 그리고 디자인 측면에 대한 정보가 필요합니다. 이를 통해 저희가 제안할 유통 전략과 마케팅 계획을 보다 구체화할 수 있을 것입니다.
+
+또한, 협력 가능성을 더 깊이 논의하기 위해 다음 주 화요일(1월 15일) 오전 10시에 미팅을 제안합니다. 귀사 사무실에서 만나 이야기를 나눌 수 있을까요?
+
+감사합니다.
+
+김철수
+상무이사
+바이크코퍼레이션
+"""
+```
+
+---
+
+## 섹션 6
+
+> 📘 **설명**
+
+다음으로는 Chain 을 생성합니다.
+
+```python
+from itertools import chain
+from langchain_core.prompts import PromptTemplate
+
+prompt = PromptTemplate.from_template(
+    "다음의 이메일 내용중 중요한 내용을 추출해 주세요.\n\n{email_conversation}"
+)
+
+llm = ChatOpenAI(temperature=0, model_name="gpt-4o")
+
+chain = prompt | llm
+
+answer = chain.stream({"email_conversation": email_conversation})
+
+output = stream_response(answer, return_output=True)
+```
+
+---
+
+## 섹션 7
+
+> 📘 **설명**
+
+체인을 실행하고 결과를 확인합니다.
+
+```python
+print(output)
+```
+
+---
+
+## 섹션 8
+
+> 📘 **설명**
+
+마지막으로 `parser`를 사용하여 결과를 파싱하고 `EmailSummary` 객체로 변환합니다.
+
+```python
+class EmailSummary(BaseModel):
+    person: str = Field(description="메일을 보낸 사람")
+    email: str = Field(description="메일을 보낸 사람의 이메일 주소")
+    subject: str = Field(description="메일 제목")
+    summary: str = Field(description="메일 본문을 요약한 텍스트")
+    date: str = Field(description="메일 본문에 언급된 미팅 날짜와 시간")
+
+
+# PydanticOutputParser 생성
+parser = PydanticOutputParser(pydantic_object=EmailSummary)
+```
+
+---
+
+## 섹션 9
+
+> 📘 **설명**
+
+## parser 가 추가된 체인 생성
+
+출력 결과를 정의한 Pydantic 객체로 생성할 수 있습니다.
+
+```python
+# instruction 을 출력합니다.
+print(parser.get_format_instructions())
+```
+
+---
+
+## 섹션 10
+
+> 📘 **설명**
+
+## with_structured_output()
+
+```python
+prompt = PromptTemplate.from_template(
+    """
+You are a helpful assistant. Please answer the following questions in KOREAN.
+
+QUESTION:
+{question}
+
+EMAIL CONVERSATION:
+{email_conversation}
+
+FORMAT:
+{format}
+"""
+)
+
+# format 에 PydanticOutputParser의 부분 포맷팅(partial) 추가
+prompt = prompt.partial(format=parser.get_format_instructions())
+```
+
+---
+
+## 섹션 11
+
+> 📘 **설명**
+
+`.with_structured_output(Pydantic)`을 사용하여 출력 파서를 추가하면, 출력을 Pydantic 객체로 변환할 수 있습니다.
+
+```python
+# chain 을 생성합니다.
+chain = prompt | llm
+```
+
+---
+
+## 섹션 12
+
+> 📘 **설명**
+
+**참고**
+
+한 가지 아쉬운 점은 `.with_structured_output()` 함수는 `stream()` 기능을 지원하지 않습니다.
+
+```python
+# chain 을 실행하고 결과를 출력합니다.
+response = chain.stream(
+    {
+        "email_conversation": email_conversation,
+        "question": "이메일 내용중 주요 내용을 추출해 주세요.",
+    }
+)
+
+# 결과는 JSON 형태로 출력됩니다.
+output = stream_response(response, return_output=True)
+```
+
+---
+
+## 핵심 요약: PydanticOutputParser란?
+
+> 💡 LLM의 출력을 구조화된 데이터 형태로 자동 파싱할 수 있는 도구입니다.
+
+- `pydantic.BaseModel`을 상속받아 출력 스키마를 정의합니다.
+- `PydanticOutputParser`는 해당 스키마를 바탕으로 문자열 출력을 Python 객체로 변환합니다.
+- `prompt + parser`를 조합하면, LLM이 자동으로 JSON 포맷에 맞춰 응답하게 할 수 있습니다.
+
+### 간단 예시
+```python
+from pydantic import BaseModel
+from langchain.output_parsers import PydanticOutputParser
+
+class Product(BaseModel):
+    name: str
+    price: int
+
+parser = PydanticOutputParser(pydantic_object=Product)
+```
+
+> ✅ JSON 기반의 API 출력, 폼 응답 처리, 구조화 리포트 작성 등에 매우 유용하게 활용됩니다.

@@ -1,6 +1,44 @@
 ---
 layout: post
-title:  ""
+title:  "ChatPromptTemplate"
 date:   2025-04-14 13:56:00 +0900
 categories: [konkuk, rag-code]
 --- 
+
+# ChatPromptTemplate
+
+이 문서는 `05-ChatPromptTemplate.ipynb`의 내용을 바탕으로, **LangChain의 ChatPromptTemplate**을 초보자도 이해할 수 있도록 정리한 실습형 문서입니다.
+
+> 📌 ChatPromptTemplate은 멀티 턴 챗봇 프롬프트를 만들 때 사용하는 템플릿 클래스입니다.
+
+---
+
+## 목차
+{:toc}
+
+---
+
+## 핵심 요약: ChatPromptTemplate이란?
+
+> 💡 시스템, 사용자, 어시스턴트 메시지를 조합하여 멀티턴 대화 프롬프트를 구성하는 방식입니다.
+
+- `from_messages()`를 통해 여러 발화 메시지를 순서대로 정리할 수 있습니다.
+- 각 메시지는 역할(role)과 내용(content)을 갖는 튜플로 구성됩니다.
+- 메시지 역할 예시:
+  - `"system"`: 모델에게 부여할 역할 또는 지시
+  - `"human"`: 사용자 입력
+  - `"ai"` 또는 `"assistant"`: 모델의 응답
+
+### 예시 코드
+```python
+from langchain.prompts import ChatPromptTemplate
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "너는 친절한 조수야."),
+    ("human", "서울의 수도는 뭐야?")
+])
+
+print(prompt.format())
+```
+
+> ✅ ChatPromptTemplate은 멀티턴 대화를 설계할 때 가장 기본적이고 중요한 도구입니다.

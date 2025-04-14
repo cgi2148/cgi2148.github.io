@@ -1,6 +1,261 @@
 ---
 layout: post
-title:  ""
+title:  "FewShotPromptTemplate"
 date:   2025-04-14 13:53:00 +0900
 categories: [konkuk, rag-code]
 --- 
+# FewShotPromptTemplate: 예시 기반 프롬프트 설계
+
+이 문서는 `02-FewShotTemplates.ipynb`에 포함된 내용을 정리하여, LangChain의 **FewShotPromptTemplate** 개념과 실습 코드를 초보자도 이해할 수 있도록 설명합니다.
+
+> 📌 FewShotPromptTemplate은 LLM에게 예시(Example)를 함께 제공하여 더 명확하고 일관된 출력을 유도하는 템플릿입니다.
+
+---
+
+## 목차
+{:toc}
+
+---
+
+## 섹션 1
+
+> 📘 **설명**
+
+## FewShotPromptTemplate
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+---
+
+## 섹션 2
+
+> 📘 **설명**
+
+## Example Selector
+
+예제가 많은 경우 프롬프트에 포함할 예제를 선택해야 할 수도 있습니다. Example Selector 는 이 작업을 담당하는 클래스입니다.
+
+- [API 문서](https://api.python.langchain.com/en/latest/core/example_selectors.html)
+
+```python
+# LangSmith 추적을 설정합니다. https://smith.langchain.com
+# !pip install -qU langchain-teddynote
+from langchain_teddynote import logging
+
+# 프로젝트 이름을 입력합니다.
+logging.langsmith("CH02-Prompt")
+```
+
+---
+
+## 섹션 3
+
+> 📘 **설명**
+
+이번에는 ExampleSelector 를 사용하여 FewShotPromptTemplate 을 생성합니다.
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_teddynote.messages import stream_response
+
+# 객체 생성
+llm = ChatOpenAI(
+    temperature=0,  # 창의성
+    model_name="gpt-4-turbo",  # 모델명
+)
+
+# 질의내용
+question = "대한민국의 수도는 뭐야?"
+
+# 질의
+answer = llm.stream(question)
+stream_response(answer)
+```
+
+---
+
+## 섹션 4
+
+> 📘 **설명**
+
+## FewShotChatMessagePromptTemplate
+
+```python
+from langchain_core.prompts.few_shot import FewShotPromptTemplate
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+
+examples = [
+    {
+        "question": "스티브 잡스와 아인슈타인 중 누가 더 오래 살았나요?",
+        "answer": """이 질문에 추가 질문이 필요한가요: 예.
+추가 질문: 스티브 잡스는 몇 살에 사망했나요?
+중간 답변: 스티브 잡스는 56세에 사망했습니다.
+추가 질문: 아인슈타인은 몇 살에 사망했나요?
+중간 답변: 아인슈타인은 76세에 사망했습니다.
+최종 답변은: 아인슈타인
+""",
+    },
+    {
+        "question": "네이버의 창립자는 언제 태어났나요?",
+        "answer": """이 질문에 추가 질문이 필요한가요: 예.
+추가 질문: 네이버의 창립자는 누구인가요?
+중간 답변: 네이버는 이해진에 의해 창립되었습니다.
+추가 질문: 이해진은 언제 태어났나요?
+중간 답변: 이해진은 1967년 6월 22일에 태어났습니다.
+최종 답변은: 1967년 6월 22일
+""",
+    },
+    {
+        "question": "율곡 이이의 어머니가 태어난 해의 통치하던 왕은 누구인가요?",
+        "answer": """이 질문에 추가 질문이 필요한가요: 예.
+추가 질문: 율곡 이이의 어머니는 누구인가요?
+중간 답변: 율곡 이이의 어머니는 신사임당입니다.
+추가 질문: 신사임당은 언제 태어났나요?
+중간 답변: 신사임당은 1504년에 태어났습니다.
+추가 질문: 1504년에 조선을 통치한 왕은 누구인가요?
+중간 답변: 1504년에 조선을 통치한 왕은 연산군입니다.
+최종 답변은: 연산군
+""",
+    },
+    {
+        "question": "올드보이와 기생충의 감독이 같은 나라 출신인가요?",
+        "answer": """이 질문에 추가 질문이 필요한가요: 예.
+추가 질문: 올드보이의 감독은 누구인가요?
+중간 답변: 올드보이의 감독은 박찬욱입니다.
+추가 질문: 박찬욱은 어느 나라 출신인가요?
+중간 답변: 박찬욱은 대한민국 출신입니다.
+추가 질문: 기생충의 감독은 누구인가요?
+중간 답변: 기생충의 감독은 봉준호입니다.
+추가 질문: 봉준호는 어느 나라 출신인가요?
+중간 답변: 봉준호는 대한민국 출신입니다.
+최종 답변은: 예
+""",
+    },
+]
+```
+
+---
+
+## 섹션 5
+
+> 📘 **설명**
+
+fewshot 예제와 example selector를 사용하여 유사한 예제 1개를 선택합니다.
+
+```python
+example_prompt = PromptTemplate.from_template(
+    "Question:\n{question}\nAnswer:\n{answer}"
+)
+
+print(example_prompt.format(**examples[0]))
+```
+
+---
+
+## 섹션 6
+
+> 📘 **설명**
+
+### Example Selector 의 유사도 검색 문제 해결
+
+```python
+prompt = FewShotPromptTemplate(
+    examples=examples,
+    example_prompt=example_prompt,
+    suffix="Question:\n{question}\nAnswer:",
+    input_variables=["question"],
+)
+
+question = "Google이 창립된 연도에 Bill Gates의 나이는 몇 살인가요?"
+final_prompt = prompt.format(question=question)
+print(final_prompt)
+```
+
+---
+
+## 섹션 7
+
+> 📘 **설명**
+
+유사도 계산시 `instruction` 과 `input` 을 사용하고 있습니다. 하지만, `instruction` 만 사용하여 검색시 제대로된 유사도 결과가 나오지 않습니다. 
+
+이를 해결하기 위해 커스텀 유사도 계산을 위한 클래스를 정의합니다.
+
+```python
+# 결과 출력
+answer = llm.stream(final_prompt)
+stream_response(answer)
+```
+
+---
+
+## 섹션 8
+
+> 📘 **설명**
+
+아래는 잘못 검색된 결과의 예시입니다.
+
+```python
+prompt = FewShotPromptTemplate(
+    examples=examples,
+    example_prompt=example_prompt,
+    suffix="Question:\n{question}\nAnswer:",
+    input_variables=["question"],
+)
+
+# chain 생성
+chain = prompt | llm | StrOutputParser()
+
+# 결과 출력
+answer = chain.stream(
+    {"question": "Google이 창립된 연도에 Bill Gates의 나이는 몇 살인가요?"}
+)
+stream_response(answer)
+```
+
+---
+
+## 핵심 요약: FewShotPromptTemplate이란?
+
+> 💡 예시(샘플)를 포함해 LLM의 응답 품질을 높이는 프롬프트 설계 방식입니다.
+
+- `FewShotPromptTemplate`은 여러 개의 예시를 템플릿에 삽입하여 모델이 **출력 형식과 맥락을 학습**할 수 있도록 돕습니다.
+- 예시는 리스트 형태로 전달되며, 각 예시는 `ExamplePrompt`를 통해 정의됩니다.
+- 일반적으로 다음과 같이 구성됩니다:
+  - **예시 템플릿**
+  - **메인 프롬프트 템플릿**
+  - **예시 삽입 위치 지정자**
+
+### 코드 예시
+```python
+from langchain.prompts import FewShotPromptTemplate, PromptTemplate
+
+examples = [
+    {"question": "서울의 수도는?", "answer": "서울은 대한민국의 수도입니다."},
+    {"question": "파리의 수도는?", "answer": "파리는 프랑스의 수도입니다."}
+]
+
+example_prompt = PromptTemplate(
+    input_variables=["question", "answer"],
+    template="Q: {question}
+A: {answer}"
+)
+
+prompt = FewShotPromptTemplate(
+    examples=examples,
+    example_prompt=example_prompt,
+    suffix="Q: {input}
+A:",
+    input_variables=["input"]
+)
+
+print(prompt.format(input="도쿄의 수도는?"))
+```
+
+> ✅ 잘 설계된 예시와 템플릿의 조합은 모델의 품질을 획기적으로 높일 수 있습니다.

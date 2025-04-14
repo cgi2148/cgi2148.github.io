@@ -1,6 +1,120 @@
 ---
 layout: post
-title:  ""
+title:  "LangChain Hub"
 date:   2025-04-14 13:54:00 +0900
 categories: [konkuk, rag-code]
 --- 
+# LangChain Hub
+
+이 문서는 `03-LangChain-Hub.ipynb`의 내용을 바탕으로, LangChain Hub의 사용법을 정리한 실습 중심 가이드입니다.
+
+> 📌 **LangChain Hub**는 사전 정의된 프롬프트나 체인 구성요소를 쉽게 재사용하거나 공유할 수 있도록 도와주는 오픈소스 저장소입니다.
+
+---
+
+## 목차
+{:toc}
+
+---
+
+## 섹션 1
+
+> 📘 **설명**
+
+다음은 LangChain Hub 에서 프롬프트를 받아서 실행하는 예제입니다.
+
+아래 주소에서 LangChain Hub 프롬프트를 확인할 수 있습니다.
+
+받아오는 방법은 프롬프트 repo 의 아이디 값을 가져 올 수 있고, commit id 를 붙여서 특정 버전에 대한 프롬프트를 받아올 수도 있습니다.
+
+```python
+from langchain import hub
+
+# 가장 최신 버전의 프롬프트를 가져옵니다.
+prompt = hub.pull("rlm/rag-prompt")
+```
+
+---
+
+## 섹션 2
+
+> 📘 **설명**
+
+## Hub로부터 Prompt 받아오기
+
+```python
+# 프롬프트 내용 출력
+print(prompt)
+```
+
+---
+
+## 섹션 3
+
+> 📘 **설명**
+
+## Prompt Hub 에 자신의 프롬프트 등록
+
+```python
+# 특정 버전의 프롬프트를 가져오려면 버전 해시를 지정하세요
+prompt = hub.pull("rlm/rag-prompt:50442af1")
+prompt
+```
+
+---
+
+## 섹션 4
+
+> 📘 **설명**
+
+다음은 Hub 에 성공적으로 업로드 된 후 출력입니다.
+
+`아이디/프롬프트명/해시`
+
+```python
+from langchain.prompts import ChatPromptTemplate
+
+
+prompt = ChatPromptTemplate.from_template(
+    "주어진 내용을 바탕으로 다음 문장을 요약하세요. 답변은 반드시 한글로 작성하세요\n\nCONTEXT: {context}\n\nSUMMARY:"
+)
+prompt
+```
+
+---
+
+## 섹션 5
+
+> 📘 **설명**
+
+> 출력: 'https://smith.langchain.com/hub/teddynote/simple-summary-korean/0e296563'
+
+```python
+from langchain import hub
+
+# 프롬프트를 허브에 업로드합니다.
+hub.push("teddynote/simple-summary-korean", prompt)
+```
+
+---
+
+## 핵심 요약: LangChain Hub이란?
+
+> 💡 LangChain Hub은 사전 제작된 프롬프트나 체인 요소를 가져와 손쉽게 재사용할 수 있도록 도와주는 중앙 저장소입니다.
+
+- `lc://` 형식의 URI를 통해 프롬프트, 체인, 에이전트 등을 불러올 수 있습니다.
+- `langchainhub` 라이브러리를 통해 설치 및 조회가 가능하며,
+- 협업 시나리오에서 공통 템플릿을 팀 단위로 공유하는 데 매우 유용합니다.
+
+### 대표적 사용 예시
+
+```python
+from langchain import hub
+
+prompt = hub.pull("rlm/rag-prompt")
+```
+
+- 위 코드처럼 `hub.pull("작성자/템플릿명")`을 통해 프롬프트를 불러올 수 있습니다.
+- 불러온 객체는 일반적인 `PromptTemplate`처럼 사용할 수 있습니다.
+
+> ✅ Hub를 활용하면 팀 내에서 반복적으로 사용하는 체인을 빠르게 구성하고 재사용성을 극대화할 수 있습니다.
