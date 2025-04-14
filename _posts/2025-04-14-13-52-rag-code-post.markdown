@@ -1,0 +1,296 @@
+---
+layout: post
+title:  "PromptTemplate "
+date:   2025-04-14 13:52:00 +0900
+categories: [konkuk, rag-code]
+--- 
+
+# LangChain PromptTemplate 사용법 정리
+
+이 문서는 `01-PromptTemplate.ipynb`의 내용을 바탕으로, LangChain의 **PromptTemplate**을 초보자도 쉽게 이해할 수 있도록 정리한 실습 중심 가이드입니다.
+
+> 📌 PromptTemplate은 LLM에게 지시를 내리는 형식을 설계하는 핵심 구성 요소입니다.
+
+---
+
+## 섹션 1
+
+> 📘 **설명**
+
+## PromptTemplate
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+---
+
+## 섹션 2
+
+> 📘 **설명**
+
+LLM 객체를 정의합니다.
+
+```python
+# LangSmith 추적을 설정합니다. https://smith.langchain.com
+# !pip install -qU langchain-teddynote
+from langchain_teddynote import logging
+
+# 프로젝트 이름을 입력합니다.
+logging.langsmith("CH02-Prompt")
+```
+
+---
+
+## 섹션 3
+
+> 📘 **설명**
+
+### 방법 1. from_template() 메소드를 사용하여 PromptTemplate 객체 생성
+
+- 치환될 변수를 `{ 변수 }` 로 묶어서 템플릿을 정의합니다.
+
+```python
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI()
+```
+
+---
+
+## 섹션 4
+
+> 📘 **설명**
+
+`country` 변수에 값을 넣어서 문장을 생성할 수 있습니다.
+
+```python
+from langchain_core.prompts import PromptTemplate
+
+# template 정의. {country}는 변수로, 이후에 값이 들어갈 자리를 의미
+template = "{country}의 수도는 어디인가요?"
+
+# from_template 메소드를 이용하여 PromptTemplate 객체 생성
+prompt = PromptTemplate.from_template(template)
+prompt
+```
+
+---
+
+## 섹션 5
+
+> 📘 **설명**
+
+### 방법 2. PromptTemplate 객체 생성과 동시에 prompt 생성
+
+```python
+# prompt 생성. format 메소드를 이용하여 변수에 값을 넣어줌
+prompt = prompt.format(country="대한민국")
+prompt
+```
+
+---
+
+## 섹션 6
+
+> 📘 **설명**
+
+추가 유효성 검사를 위해 `input_variables` 를 명시적으로 지정하세요.
+
+이러한 변수는 인스턴스화 중에 템플릿 문자열에 있는 변수와 비교하여 불일치하는 경우 예외를 발생시킵니다.
+
+```python
+# template 정의
+template = "{country}의 수도는 어디인가요?"
+
+# from_template 메소드를 이용하여 PromptTemplate 객체 생성
+prompt = PromptTemplate.from_template(template)
+
+# chain 생성
+chain = prompt | llm
+```
+
+---
+
+## 섹션 7
+
+> 📘 **설명**
+
+### `partial_variables`: 부분 변수 채움
+
+`partial`을 사용하는 일반적인 용도는 함수를 부분적으로 사용하는 것입니다. 이 사용 사례는 **항상 공통된 방식으로 가져오고 싶은 변수** 가 있는 경우입니다.
+
+대표적인 예가 **날짜나 시간** 입니다.
+
+항상 현재 날짜가 표시되기를 원하는 프롬프트가 있다고 가정해 보겠습니다. 프롬프트에 하드 코딩할 수도 없고, 다른 입력 변수와 함께 전달하는 것도 번거롭습니다. 이 경우 항상 현재 **날짜를 반환하는 함수** 를 사용하여 프롬프트를 부분적으로 변경할 수 있으면 매우 편리합니다.
+
+```python
+# country 변수에 입력된 값이 자동으로 치환되어 수행됨
+chain.invoke("대한민국").content
+```
+
+---
+
+## 섹션 8
+
+> 📘 **설명**
+
+다음의 코드는 오늘 날짜를 구하는 파이썬 코드입니다.
+
+```python
+# template 정의
+template = "{country}의 수도는 어디인가요?"
+
+# PromptTemplate 객체를 활용하여 prompt_template 생성
+prompt = PromptTemplate(
+    template=template,
+    input_variables=["country"],
+)
+
+prompt
+```
+
+---
+
+## 섹션 9
+
+> 📘 **설명**
+
+## 파일로부터 template 읽어오기
+
+```python
+# prompt 생성
+prompt.format(country="대한민국")
+```
+
+---
+
+## 섹션 10
+
+> 📘 **설명**
+
+Window 사용자 중 이전의 코드가 오류가 나는 경우 아래의 코드로 실행하세요(인코딩 설정)
+
+```python
+# template 정의
+template = "{country1}과 {country2}의 수도는 각각 어디인가요?"
+
+# PromptTemplate 객체를 활용하여 prompt_template 생성
+prompt = PromptTemplate(
+    template=template,
+    input_variables=["country1"],
+    partial_variables={
+        "country2": "미국"  # dictionary 형태로 partial_variables를 전달
+    },
+)
+
+prompt
+```
+
+---
+
+## 섹션 11
+
+> 📘 **설명**
+
+## ChatPromptTemplate
+
+```python
+prompt.format(country1="대한민국")
+```
+
+---
+
+## 섹션 12
+
+> 📘 **설명**
+
+`ChatPromptTemplate` 은 대화목록을 프롬프트로 주입하고자 할 때 활용할 수 있습니다.
+
+메시지는 튜플(tuple) 형식으로 구성하며, (`role`, `message`) 로 구성하여 리스트로 생성할 수 있습니다.
+
+**role**
+- `"system"`: 시스템 설정 메시지 입니다. 주로 전역설정과 관련된 프롬프트입니다.
+- `"human"` : 사용자 입력 메시지 입니다.
+- `"ai"`: AI 의 답변 메시지입니다.
+
+```python
+prompt_partial = prompt.partial(country2="캐나다")
+prompt_partial
+```
+
+---
+
+## 섹션 13
+
+> 📘 **설명**
+
+생성한 메시지를 바로 주입하여 결과를 받을 수 있습니다.
+
+```python
+prompt_partial.format(country1="대한민국")
+```
+
+---
+
+## 섹션 14
+
+> 📘 **설명**
+
+이번에는 체인을 생성해 보겠습니다.
+
+```python
+chain = prompt_partial | llm
+```
+
+---
+
+## 섹션 15
+
+> 📘 **설명**
+
+## MessagePlaceholder
+
+또한 LangChain은 포맷하는 동안 렌더링할 메시지를 완전히 제어할 수 있는 `MessagePlaceholder` 를 제공합니다. 
+
+메시지 프롬프트 템플릿에 어떤 역할을 사용해야 할지 확실하지 않거나 서식 지정 중에 메시지 목록을 삽입하려는 경우 유용할 수 있습니다.
+
+```python
+chain.invoke("대한민국").content
+```
+
+---
+
+## 섹션 16
+
+> 📘 **설명**
+
+`conversation` 대화목록을 나중에 추가하고자 할 때 `MessagesPlaceholder` 를 사용할 수 있습니다.
+
+```python
+chain.invoke({"country1": "대한민국", "country2": "호주"}).content
+```
+
+---
+
+## 핵심 요약: PromptTemplate이란?
+
+> 💡 LLM에게 명확한 지시를 내리기 위해 사용하는 템플릿입니다.
+
+- `PromptTemplate.from_template()`을 통해 직접 프롬프트 양식을 정의할 수 있습니다.
+- 템플릿에는 `{변수명}` 형식으로 동적인 입력을 삽입합니다.
+- `.format()` 또는 `.invoke()`를 통해 템플릿에 값을 채워 사용할 수 있습니다.
+- 여러 프롬프트 조합을 관리할 때 매우 유용합니다.
+
+### 실습 요약 예시
+```python
+from langchain.prompts import PromptTemplate
+
+template = "당신은 여행 가이드입니다. {location}에 대해 알려주세요."
+prompt = PromptTemplate.from_template(template)
+print(prompt.format(location="제주도"))
+```
+
+> ✅ PromptTemplate은 체인 구축의 출발점이며, 잘 설계된 프롬프트가 전체 성능을 좌우합니다.
