@@ -13,17 +13,6 @@ categories: [konkuk, project]
 
 ---
 
-## 목차
-1. [Wi‑Fi 인버터 원격 모니터링 모듈](#WiFi)
-2. [BOM 기반 케이블 자동 컷·라벨 시스템](#BOM)
-3. [Pick‑to‑Light 키팅 선반](#Pick2Light)
-4. [YOLO 기반 조립 실수 감지 시스템](#YOLO)
-5. [로봇팔 자동 볼트 체결 시스템](#Robot)
-6. [예산 총괄표](#Budget)
-7. [플랫폼 제외 논리 및 전략](#NoPlatform)
-
----
-
 <a id="WiFi"></a>
 ## ① Wi‑Fi 인버터 **원격 모니터링 모듈**
 
