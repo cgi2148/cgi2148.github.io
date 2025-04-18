@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "도큐먼트 로드 (Document Loader)"
+title: "도큐먼트 로드 (Document Loader)"
 date: 2025-04-07 10:26:00 +0900
 categories: [konkuk, rag]
 --- 
