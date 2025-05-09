@@ -36,3 +36,7 @@ permalink: /
 ## PUBLICATIONS
 
 - Jeong, Y., Noh, T., Lee, Y., Lee, S., Choi, K., Jeong, S., & Kim, S. (2025). A Mobile LiDAR-Based Deep Learning Approach for Real-Time 3D Body Measurement. *Applied Sciences, 15*(4), 2001.
+
+## PATENTS
+
+- (Patent Pending) APPARATUS AND METHOD FOR GENERATING APPAREL PRODUCT SALES DOCUMENTS BASED ON ARTIFICIAL INTELLIGENCE
