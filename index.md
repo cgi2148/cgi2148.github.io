@@ -19,6 +19,10 @@ permalink: /
 정해진 틀에 안주하지 않기 위해, 새로운 분야로의 배움을 이어가고 있습니다.  
 그 과정에서 끊임없는 성장을 통해 스스로의 한계를 넓혀 가는 중입니다.
 
+## Research Interests
+  My Research interest lies in constructing Trustworthy AI, focusing on key aspects such as  
+- Data Science / AI Agent / RAG / Recommendation System...
+
 ## EDUCATION
 
 - **Master of Data Science** (2024~)  
