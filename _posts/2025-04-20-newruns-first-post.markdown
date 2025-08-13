@@ -4,8 +4,6 @@ title: "PhotoGuard를 활용한 딥페이크 방지를 위한 적대적 이미�
 date: 2025-08-13 16:10:00 +0900
 category: newruns
 ---
-# PhotoGuard를 활용한 딥페이크 방지를 위한 적대적 이미지 보호 시스템 프로토타입 구현
-
 ## 📖 목차
 1. [프로젝트 개요](#프로젝트-개요)
 2. [PhotoGuard 기술 소개](#photoguard-기술-소개)
@@ -824,55 +822,55 @@ pkill -f stable_photoguard_backend.py
 
 **시나리오 1: 마동석 Image-to-Image 변형**
 <div style="text-align: center;">
-  <img src="assets/images/newruns/마동석1.JPG" width="1000">
+  <img src="/assets/images/newruns/마동석1.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/마동석2.JPG" width="1000">
+  <img src="/assets/images/newruns/마동석2.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/마동석3.JPG" width="1000">
+  <img src="/assets/images/newruns/마동석3.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/마동석4.JPG" width="1000">
+  <img src="/assets/images/newruns/마동석4.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 
 **시나리오 2: 박은빈 Image-to-Image 변형**
 <div style="text-align: center;">
-  <img src="assets/images/newruns/박은빈.JPG" width="1000">
+  <img src="/assets/images/newruns/박은빈.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/박은빈2.JPG" width="1000">
+  <img src="/assets/images/newruns/박은빈2.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/박은빈3.JPG" width="1000">
+  <img src="/assets/images/newruns/박은빈3.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/박은빈4.JPG" width="1000">
+  <img src="/assets/images/newruns/박은빈4.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 
 **시나리오 3: 윌 스미스 Image-to-Image 변형**
 <div style="text-align: center;">
-  <img src="assets/images/newruns/윌스미스1.JPG" width="1000">
+  <img src="/assets/images/newruns/윌스미스1.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/윌스미스2.JPG" width="1000">
+  <img src="/assets/images/newruns/윌스미스2.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/윌스미스3.JPG" width="1000">
+  <img src="/assets/images/newruns/윌스미스3.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 <div style="text-align: center;">
-  <img src="assets/images/newruns/윌스미스4.JPG" width="1000">
+  <img src="/assets/images/newruns/윌스미스4.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
 </div>
 
