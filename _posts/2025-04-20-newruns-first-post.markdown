@@ -856,7 +856,7 @@ pkill -f stable_photoguard_backend.py
   <p style="margin-top: 10px;"></p>
 </div>
 
-**시나리오 3: 윌 스미스 Image-to-Image 변형**
+**시나리오 3: 윌 스미스 Text-to-Image 변형**
 <div style="text-align: center;">
   <img src="/assets/images/newruns/윌스미스1.JPG" width="1000">
   <p style="margin-top: 10px;"></p>
