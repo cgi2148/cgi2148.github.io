@@ -57,14 +57,8 @@
 					}
 					$(this).toggle(show);
 				} else if (hash === 'newruns') {
-					// Newruns 카테고리일 때는 newruns, rag, rag-code, mcp, data-science, 또는 project 카테고리가 포함된 모든 게시물 표시
-					for (var i = 0; i < categories.length; i++) {
-						if (categories[i] === 'newruns' || categories[i] === 'rag' || categories[i] === 'rag-code' || 
-							categories[i] === 'mcp' || categories[i] === 'data-science' || categories[i] === 'project') {
-							show = true;
-							break;
-						}
-					}
+					// Newruns 카테고리일 때는 newruns 카테고리가 포함된 게시물만 표시
+					show = categories.indexOf('newruns') !== -1;
 					$(this).toggle(show);
 				} else if (hash === 'rag') {
 					show = categories.indexOf('rag') !== -1;

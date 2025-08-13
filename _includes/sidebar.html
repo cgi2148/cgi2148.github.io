@@ -121,6 +121,19 @@
 						<span class="badge">{{ mustree_posts.size }}</span>
 					</a>
 				</li>
+			{% elsif cat_name == "newruns" %}
+				{% assign newruns_posts = "" | split: "" %}
+				{% for post in site.posts %}
+					{% if post.categories contains "newruns" or post.category == "newruns" %}
+						{% assign newruns_posts = newruns_posts | push: post %}
+					{% endif %}
+				{% endfor %}
+				<li>
+					<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
+						<span class="name">Newruns</span>
+						<span class="badge">{{ newruns_posts.size }}</span>
+					</a>
+				</li>
 			{% elsif cat_name != "rag" and cat_name != "rag-code" and cat_name != "mcp" and cat_name != "data-science" and cat_name != "project" %}
 				<li>
 					<a class="nav-item" href="{{ root_url }}/{{ site.category_dir }}#{{ cat_name }}" data-category="{{ cat_name }}">
