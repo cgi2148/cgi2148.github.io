@@ -6,7 +6,7 @@ permalink: /
 
 ## ABOUT ME
 
-- **건국대학교 데이터사이언스학과 석사과정 재학**  
+- **건국대학교 데이터사이언스학과 석사과정 졸업*  
 
 **Email:** cgi2148@gmail.com  
 **Phone:** +82-10-4728-2148  
@@ -25,7 +25,7 @@ permalink: /
 
 ## EDUCATION
 
-- **Master of Data Science** (2024~)  
+- **Master of Data Science** (2024~2026)  
   Konkuk University - Graduate School
 
 - **Bachelor's of Computer Science** (2022~2024)  
@@ -37,9 +37,16 @@ permalink: /
 - **YonHapNews TV** (2019~2020)  
   Camera Reporter(Assistant)
 
+- **Mustree** (2024~2025)  
+  AI Consultant
+
+- **Newruns** (2025~2026)  
+  Data Scientist/ AI Engineer
+
 ## PUBLICATIONS
 
 - Jeong, Y., Noh, T., Lee, Y., Lee, S., Choi, K., Jeong, S., & Kim, S. (2025). A Mobile LiDAR-Based Deep Learning Approach for Real-Time 3D Body Measurement. *Applied Sciences, 15*(4), 2001.
+- Choi, K., & Kim, S.(2026) Robust Object Detection under Low-Cost UAV Camera Degradation: A Physics-Based Analysis and Training Strategy Comparison : Focusing on Physics-Based Degradation Simulation and Flight Condition Analysis
 
 ## PATENTS
 
