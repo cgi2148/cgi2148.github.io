@@ -6,7 +6,7 @@ permalink: /
 
 ## ABOUT ME
 
-- **건국대학교 데이터사이언스학과 석사과정 졸업*  
+- **건국대학교 데이터사이언스학과 석사 졸업*  
 
 **Email:** cgi2148@gmail.com  
 **Phone:** +82-10-4728-2148  
@@ -42,6 +42,9 @@ permalink: /
 
 - **Newruns** (2025~2026)  
   Data Scientist/ AI Engineer
+
+- **TeamSparta** (2026~)  
+  HRD Operations Manager
 
 ## PUBLICATIONS
 
