@@ -10,7 +10,7 @@ permalink: /
 
 **Email:** cgi2148@gmail.com  
 **Phone:** +82-10-4728-2148  
-**LinkedIn:** [LinkedIn](https://www.linkedin.com/in/%EA%B4%91%EC%9D%BC-%EC%B5%9C-7b1bab355/)
+**LinkedIn:** [LinkedIn](https://www.linkedin.com/in/%EA%B4%91%EC%9D%BC-%EC%B5%9C-7b1bab355/)  
 **Website:** [cgi2148.github.io](https://cgi2148.github.io)  
 **My Labotory:** [HIFI AI Lab](https://www.hifiai.pe.kr/)  
 **GitHub:** [GitHub](https://github.com/cgi2148)
